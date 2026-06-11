@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dyslipidemia — NAPLEX Quiz</title>
+<style>
+:root{--navy:#13294b;--steel:#2e5b8a;--bg:#f4f6f9;--card:#fff;--ink:#1c2530;--muted:#5b6b7d;
+--t1:#1f8a4c;--t2:#d68a14;--t3:#c0392b;--green:#1f8a4c;--green-d:#176b3a;--red:#c0392b;--line:#dce3ec;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.5}
+header{background:var(--navy);color:#fff;padding:16px 20px}
+header h1{margin:0;font-size:19px}
+header .sub{font-size:12px;opacity:.85;margin-top:3px}
+.wrap{max-width:880px;margin:0 auto;padding:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}
+h2{font-size:16px;margin:0 0 12px;color:var(--navy)}
+label{font-size:13px;color:var(--muted);display:block;margin-bottom:4px}
+select,input{font-size:14px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:#fff}
+button{cursor:pointer;font-family:inherit}
+.ghost{background:#fff;color:var(--steel);border:1px solid var(--steel);border-radius:8px;padding:7px 13px;font-weight:600;font-size:13px}
+.ghost:hover{background:#eef4fb}
+.hubbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.hubstat{font-size:13px;color:var(--muted);font-weight:600}
+.step .steplabel{font-size:14px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:9px;margin-bottom:13px}
+.steplabel .num{display:inline-flex;width:23px;height:23px;align-items:center;justify-content:center;
+background:var(--navy);color:#fff;border-radius:50%;font-size:12px;font-weight:700;flex:none}
+.modegrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.modegrid{grid-template-columns:1fr}}
+.modecard{text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:15px;color:var(--ink)}
+.modecard:hover{border-color:var(--steel)}
+.modecard.on{border-color:var(--steel);background:#eef4fb;box-shadow:0 0 0 2px rgba(46,91,138,.12)}
+.modecard .mc-t{font-weight:700;font-size:14px;color:var(--navy)}
+.modecard .mc-s{font-size:12px;color:var(--muted);margin-top:3px}
+.subhdr{font-size:13px;color:var(--muted);margin:16px 0 6px;display:flex;justify-content:space-between;align-items:center}
+.subtopics{max-height:230px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:8px}
+.subtopics label{display:flex;align-items:center;gap:8px;margin:0;padding:5px 4px;font-size:13px;color:var(--ink);cursor:pointer}
+.subtopics input{margin:0}
+.count-pill{font-size:13px;color:var(--muted)}
+.tag-link{font-size:13px;background:none;color:var(--steel);border:none;padding:4px;cursor:pointer;text-decoration:underline}
+.filtrow{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.chk{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--ink);margin:0}
+.chk input{margin:0}
+.pills{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.pill{background:#fff;border:1.5px solid var(--line);color:var(--ink);border-radius:22px;padding:8px 18px;font-weight:600;font-size:14px}
+.pill:hover{border-color:var(--steel)}
+.pill.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.bigbtn{width:100%;padding:14px;font-size:15px;border:none;border-radius:10px;font-weight:700;color:#fff;background:var(--steel)}
+.bigbtn:hover{filter:brightness(1.06)}
+.bigbtn:disabled{background:#9fb0c2;cursor:not-allowed}
+.bigbtn.start{background:var(--green)}
+.bigbtn.start:hover{background:var(--green-d);filter:none}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;color:#fff}
+.b-t1{background:var(--t1)}.b-t2{background:var(--t2)}.b-t3{background:var(--t3)}
+.b-dom{background:var(--steel)}.b-sub{background:#7a8aa0}.b-id{background:#aab6c4}
+.b-new{background:#0a7d8c}.b-fill{background:#6a3d9a}
+.stem{font-size:15px;margin:8px 0 14px;font-weight:500}
+.opt{display:block;width:100%;text-align:left;background:#fff;color:var(--ink);border:1px solid var(--line);
+border-radius:8px;padding:11px 13px;margin-bottom:8px;font-weight:400;font-size:14px}
+.opt:hover{border-color:var(--steel)}
+.opt.sel{border-color:var(--steel);background:#eef4fb}
+.opt.correct{background:#e6f5ec;border-color:var(--green);color:#0f5a30}
+.opt.wrong{background:#fbe9e7;border-color:var(--red);color:#7d2018}
+.opt .ck{font-weight:700;margin-right:8px}
+.fillrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.fillrow input{flex:1;font-size:16px;padding:11px 13px}
+.fillrow .unit{font-weight:600;color:var(--muted)}
+.fillrow input.correct{border-color:var(--green);background:#e6f5ec}
+.fillrow input.wrong{border-color:var(--red);background:#fbe9e7}
+.exp{background:#f7f9fc;border-left:3px solid var(--green);border-radius:6px;padding:11px 13px;font-size:13.5px;margin-top:6px}
+.bar{height:7px;background:#e3e9f0;border-radius:5px;overflow:hidden;margin:10px 0}
+.bar > div{height:100%;background:var(--green);width:0%}
+.topbar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:6px}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
+.stat{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.big{font-size:34px;font-weight:800;color:var(--navy);text-align:center;margin:6px 0}
+.muted{color:var(--muted);font-size:13px}
+footer{text-align:center;font-size:11px;color:var(--muted);padding:14px}
+.hide{display:none}
+</style></head>
+<body>
+<header><h1>Dyslipidemia</h1><div class="sub">NAPLEX 2026 Quiz · numeric fill-in + MCQ + SATA · Generic (Brand) paired · answers hidden until you submit</div></header>
+<div class="wrap">
+  <div class="hubbar">
+    <span class="hubstat" id="hubstat"></span>
+    <span><button class="ghost" onclick="go('prog')">Progress</button></span>
+  </div>
+  <div id="dash"></div>
+  <div id="quiz" class="hide"></div>
+  <div id="results" class="hide"></div>
+  <div id="prog" class="hide"></div>
+</div>
+<footer>John Williams, PharmD, MS · PGY1 Pharmacy Resident, Confluence Health (Wenatchee, WA)</footer>
+<script>
+const ITEMS = [{"id": "DLP001", "subtopic": "Risk Assessment & LDL Goals", "domain": "D3", "nabp": "3.D.1", "tier": "T2", "type": "MCQ", "aware": true, "recall": false, "stem": "Per the 2026 ACC/AHA dyslipidemia guideline, what is the LDL-C goal for a patient with established ASCVD at very high risk (secondary prevention)?", "opts": ["<55 mg/dL", "<70 mg/dL", "<100 mg/dL", "<130 mg/dL"], "ans": 0, "exp": "2026 guideline reintroduces explicit treat-to-target goals. Very-high-risk secondary prevention: LDL-C <55 mg/dL (non-HDL <85). High-risk primary <70; borderline/intermediate <100. 'Lower for longer' — lower lifetime LDL exposure ↓ ASCVD.", "anchor": "2026 ACC/AHA Dyslipidemia."}, {"id": "DLP002", "subtopic": "Risk Assessment & LDL Goals", "domain": "D3", "nabp": "3.B", "tier": "T2", "type": "MCQ", "aware": true, "recall": false, "stem": "Which risk calculator does the 2026 guideline recommend for primary-prevention ASCVD risk estimation, replacing the Pooled Cohort Equations?", "opts": ["PREVENT equations", "Framingham score", "Reynolds score", "QRISK3 score"], "ans": 0, "exp": "PREVENT (ages 30–79) supersedes the Pooled Cohort Equations, which overestimated 10-yr risk ~40–50%. Bands: low <3%, borderline 3–<5%, intermediate 5–<10%, high ≥10%. Risk enhancers + CAC refine borderline/intermediate cases.", "anchor": "2026 ACC/AHA Dyslipidemia."}, {"id": "DLP003", "subtopic": "Risk Assessment & LDL Goals", "domain": "D3", "nabp": "3.B", "tier": "T1", "type": "MCQ", "aware": true, "recall": false, "stem": "According to the 2026 guideline, lipoprotein(a) screening is recommended:", "opts": ["Once in adulthood for all adults", "Only in confirmed familial hypercholesterolemia", "Annually in all statin-treated patients", "Only after a first ASCVD event"], "ans": 0, "exp": "Lp(a) is largely genetic and stable lifelong → measure once in adulthood (universal). Elevated ≥125 nmol/L (≥50 mg/dL) ≈ 1.4× long-term ASCVD risk; 250 nmol/L ≥2×. No FDA-approved Lp(a)-targeted drug yet → prompts more aggressive overall LDL/risk reduction.", "anchor": "2026 ACC/AHA; NLA 2024."}, {"id": "DLP004", "subtopic": "Risk Assessment & LDL Goals", "domain": "D3", "nabp": "3.D.3", "tier": "T2", "type": "SATA", "aware": true, "recall": false, "stem": "Which findings are recognized ASCVD 'risk enhancers' in the 2026 guideline that favor earlier lipid-lowering therapy? Select all that apply.", "opts": ["Persistently elevated triglycerides", "Chronic inflammatory disease (e.g., RA, lupus)", "South Asian ancestry", "Preeclampsia or early menopause", "Elevated HDL-C >60 mg/dL"], "ans": [0, 1, 2, 3], "exp": "Risk enhancers: family hx premature ASCVD, chronic inflammatory dz, high-risk ancestry (South Asian/Filipino), metabolic dz (obesity, DM, CKD), reproductive markers (preeclampsia, early menopause, GDM), ↑TG, ↑Lp(a), ↑apoB, ↑hsCRP. High HDL is NOT protective 'free pass' — not an enhancer.", "anchor": "2026 ACC/AHA Dyslipidemia."}, {"id": "DLP005", "subtopic": "Risk Assessment & LDL Goals", "domain": "D3", "nabp": "3.B", "tier": "T2", "type": "MCQ", "aware": true, "recall": false, "stem": "A non-contrast coronary artery calcium (CAC) scan is most useful in the 2026 framework to refine therapy decisions in which patient?", "opts": ["Intermediate-risk adult unsure about starting a statin", "Patient with established clinical ASCVD on therapy", "Patient already well below an LDL of 55 mg/dL", "Healthy adult whose 10-year ASCVD risk is under 3%"], "ans": 0, "exp": "CAC helps borderline/intermediate-risk adults (men ≥40, women ≥45) when the statin decision is uncertain. Any CAC >0 supports LDL <100 (lower with higher scores); CAC=0 may defer. Not needed in known ASCVD (already high-risk) or at-goal patients.", "anchor": "2026 ACC/AHA Dyslipidemia."}, {"id": "DLP006", "subtopic": "Statins: Intensity & MOA", "domain": "D1", "nabp": "1.A.1", "tier": "T1", "type": "MCQ", "aware": false, "recall": false, "stem": "What is the mechanism of action of HMG-CoA reductase inhibitors?", "opts": ["Inhibit hepatic cholesterol synthesis, raising LDL-receptor density", "Block intestinal cholesterol absorption at the NPC1L1 transporter", "Bind circulating PCSK9 to preserve hepatic LDL receptors", "Inhibit ATP-citrate lyase one step upstream of HMG-CoA"], "ans": 0, "exp": "Statins inhibit HMG-CoA reductase (rate-limiting step of hepatic cholesterol synthesis) → ↓ intracellular cholesterol → ↑ LDL-receptor expression → ↑ LDL clearance → ↓ serum LDL. Also modestly ↓TG, ↑HDL. Foundation of all lipid lowering.", "anchor": "Pharmacology."}, {"id": "DLP007", "subtopic": "Statins: Intensity & MOA", "domain": "D2", "nabp": "2.A.2", "tier": "T2", "type": "MCQ", "aware": false, "recall": false, "stem": "Which regimen qualifies as high-intensity statin therapy (expected LDL reduction ≥50%)?", "opts": ["Rosuvastatin 20 mg daily", "Atorvastatin 10 mg daily", "Pravastatin 40 mg daily", "Simvastatin 20 mg daily"], "ans": 0, "exp": "High-intensity = atorvastatin (Lipitor) 40–80 mg or rosuvastatin (Crestor) 20–40 mg (↓LDL ≥50%). Atorvastatin 10–20, rosuvastatin 5–10, simvastatin (Zocor) 20–40, pravastatin (Pravachol) 40–80, pitavastatin (Livalo) 1–4 = moderate (↓LDL 30–49%). Simvastatin 80 mg is no longer used (myopathy).", "anchor": "Statin intensity table."}, {"id": "DLP008", "subtopic": "Statins: Intensity & MOA", "domain": "D2", "nabp": "2.A.2", "tier": "T2", "type": "SATA", "aware": false, "recall": false, "stem": "Which statin regimens are classified as moderate-intensity? Select all that apply.", "opts": ["Atorvastatin 20 mg daily", "Rosuvastatin 10 mg daily", "Simvastatin 20 mg daily", "Atorvastatin 80 mg daily", "Pravastatin 10 mg daily"], "ans": [0, 1, 2], "exp": "Moderate (↓LDL 30–49%): atorvastatin (Lipitor) 10–20, rosuvastatin (Crestor) 5–10, simvastatin (Zocor) 20–40, pravastatin (Pravachol) 40–80, lovastatin (Mevacor) 40, pitavastatin (Livalo) 1–4. Atorvastatin 80 = high-intensity; pravastatin 10 = low-intensity.", "anchor": "Statin intensity table."}, {"id": "DLP009", "subtopic": "Statins: AE/DDI/PGx", "domain": "D3", "nabp": "3.C.5", "tier": "T2", "type": "MCQ", "aware": false, "recall": false, "stem": "A patient on simvastatin (Zocor) is prescribed clarithromycin. What is the primary concern with this combination?", "opts": ["Increased myopathy/rhabdomyolysis risk from CYP3A4 inhibition", "Reduced statin efficacy from CYP3A4 enzyme induction instead", "Increased bleeding risk mediated by CYP2C9 inhibition effects", "QT-interval prolongation from cardiac hERG potassium blockade"], "ans": 0, "exp": "Simvastatin & lovastatin (Mevacor) are CYP3A4 substrates. Strong 3A4 inhibitors (clarithromycin, itraconazole, ritonavir, grapefruit) ↑ statin levels → ↑ rhabdo. Simvastatin is CONTRAINDICATED with strong 3A4 inhibitors. Rosuvastatin (Crestor)/pravastatin (Pravachol) are non-3A4 → safer choices.", "anchor": "DDI; CYP3A4."}, {"id": "DLP010", "subtopic": "Statins: AE/DDI/PGx", "domain": "D1", "nabp": "1.A.2", "tier": "T3", "type": "MCQ", "aware": false, "recall": false, "stem": "A reduced-function SLCO1B1 (OATP1B1) genotype most increases the myopathy risk of which statin?", "opts": ["Simvastatin", "Pravastatin", "Rosuvastatin", "Pitavastatin"], "ans": 0, "exp": "SLCO1B1 encodes OATP1B1, the hepatic uptake transporter. Reduced function ↑ systemic simvastatin (Zocor) acid exposure → ↑ myopathy (strongest for simvastatin). CPIC: consider lower dose / alternative statin. Effect is statin-specific and largest with simvastatin.", "anchor": "PGx; CPIC SLCO1B1."}, {"id": "DLP011", "subtopic": "Statins: AE/DDI/PGx", "domain": "D3", "nabp": "3.C.3", "tier": "T3", "type": "MCQ", "aware": false, "recall": false, "stem": "Which statin dose limit applies when co-administered with verapamil or diltiazem?", "opts": ["Simvastatin should not exceed 10 mg daily", "Rosuvastatin should not exceed 5 mg daily", "Atorvastatin should not exceed 20 mg daily", "Pravastatin should not exceed 40 mg daily"], "ans": 0, "exp": "Moderate CYP3A4 inhibitors raise simvastatin (Zocor) levels: simvastatin max 10 mg/day with diltiazem/verapamil, max 20 mg/day with amlodipine. Pravastatin (Pravachol)/rosuvastatin (Crestor) are non-3A4 and unaffected. Avoid simvastatin 80 mg entirely (myopathy BBW history).", "anchor": "DDI; simvastatin label."}, {"id": "DLP012", "subtopic": "Statins: AE/DDI/PGx", "domain": "D3", "nabp": "3.C.5", "tier": "T2", "type": "SATA", "aware": false, "recall": false, "stem": "Which are recognized adverse effects or label considerations for statins? Select all that apply.", "opts": ["Myalgia / myopathy", "New-onset type 2 diabetes", "Transaminase elevation", "Permanent memory loss", "Rhabdomyolysis (rare)"], "ans": [0, 1, 2, 4], "exp": "Statin AEs: myalgia (common) → myopathy → rare rhabdo (↑CK, myoglobinuria); small ↑ new-onset DM (benefit still outweighs); ↑ transaminases (routine LFT monitoring no longer mandated). Cognitive complaints are rare/reversible — NOT permanent memory loss.", "anchor": "Statin safety."}, {"id": "DLP013", "subtopic": "Statins: AE/DDI/PGx", "domain": "D3", "nabp": "3.E.2", "tier": "T1", "type": "MCQ", "aware": false, "recall": false, "stem": "Which counseling point is most appropriate for a patient starting lovastatin (Mevacor)?", "opts": ["Take in the evening and avoid grapefruit juice", "Take on an empty stomach each morning", "Expect red-orange discoloration of urine", "Stop the drug if you develop a mild headache"], "ans": 0, "exp": "Short-half-life statins (lovastatin, simvastatin (Zocor)) are dosed in the evening (peak nocturnal cholesterol synthesis); lovastatin is taken with food. Avoid grapefruit (CYP3A4). Report unexplained muscle pain/weakness or dark urine. Atorvastatin (Lipitor)/rosuvastatin (long t½) are time-independent.", "anchor": "Counseling."}, {"id": "DLP014", "subtopic": "Ezetimibe", "domain": "D1", "nabp": "1.A.1", "tier": "T1", "type": "MCQ", "aware": false, "recall": false, "stem": "What is the mechanism of action of ezetimibe (Zetia)?", "opts": ["Inhibits the NPC1L1 intestinal cholesterol absorption transporter", "Inhibits hepatic HMG-CoA reductase to block synthesis", "Binds intestinal bile acids within the gut lumen", "Activates PPAR-alpha receptors to lower serum triglycerides"], "ans": 0, "exp": "Ezetimibe blocks the NPC1L1 sterol transporter at the intestinal brush border → ↓ cholesterol absorption → ↑ hepatic LDL-R. Monotherapy ↓LDL ~18–25%; first add-on to statin (IMPROVE-IT showed CV benefit). 10 mg PO daily, well tolerated.", "anchor": "MOA; IMPROVE-IT."}, {"id": "DLP015", "subtopic": "Ezetimibe", "domain": "D3", "nabp": "3.C.2", "tier": "T2", "type": "MCQ", "aware": true, "recall": false, "stem": "Per the 2026 nonstatin cascade, which agent is generally the first add-on for a patient not at LDL goal on a maximally tolerated statin?", "opts": ["Ezetimibe", "Evolocumab", "Inclisiran", "Gemfibrozil"], "ans": 0, "exp": "After maximally tolerated statin: add ezetimibe (Zetia) and/or bempedoic acid (oral, ~18–25% LDL ↓), then PCSK9 mAb (evolocumab (Repatha)/alirocumab (Praluent)) or inclisiran (Leqvio) if still not at goal or higher risk. 2026 allows earlier PCSK9i in select high-risk pts (equal placement with ezetimibe).", "anchor": "2026 ACC/AHA nonstatin pathway."}, {"id": "DLP016", "subtopic": "PCSK9i & Inclisiran", "domain": "D1", "nabp": "1.A.1", "tier": "T2", "type": "MCQ", "aware": false, "recall": false, "stem": "How do the monoclonal antibody PCSK9 inhibitors evolocumab (Repatha) and alirocumab (Praluent) lower LDL-C?", "opts": ["Bind circulating PCSK9 to prevent LDL-receptor degradation", "Silence hepatic PCSK9 messenger RNA inside hepatocytes", "Inhibit cholesterol synthesis at the HMG-CoA reductase step", "Block intestinal NPC1L1-mediated cholesterol absorption fully"], "ans": 0, "exp": "PCSK9 normally targets the LDL receptor for lysosomal degradation. mAbs bind circulating PCSK9 → more LDL-R recycled to the surface → ↓LDL ~50–60%. SQ q2wk or monthly. Outcomes: FOURIER (evolocumab), ODYSSEY (alirocumab). AE: injection-site reaction.", "anchor": "MOA; FOURIER/ODYSSEY."}, {"id": "DLP017", "subtopic": "PCSK9i & Inclisiran", "domain": "D1", "nabp": "1.A.1", "tier": "T2", "type": "MCQ", "aware": true, "recall": false, "stem": "Inclisiran (Leqvio) differs mechanistically from evolocumab (Repatha) in that inclisiran:", "opts": ["Is a small interfering RNA that reduces PCSK9 synthesis", "Is an oral ATP-citrate lyase inhibitor", "Binds PCSK9 protein in the circulation", "Inhibits intestinal cholesterol absorption"], "ans": 0, "exp": "Inclisiran is a hepatocyte-directed siRNA that degrades PCSK9 mRNA → ↓ PCSK9 production. Dosed SQ at day 0, 3 months, then every 6 months (twice-yearly), ↓LDL ~50%. 2026 guideline notes cardiovascular outcomes trials are still pending vs the mAbs.", "anchor": "2026 ACC/AHA; ORION program."}, {"id": "DLP018", "subtopic": "PCSK9i & Inclisiran", "domain": "D3", "nabp": "3.D.3", "tier": "T2", "type": "MCQ", "aware": false, "recall": false, "stem": "Which administration schedule correctly describes maintenance inclisiran (Leqvio) dosing?", "opts": ["SQ at day 0 and month 3, then every 6 months", "Subcutaneously once every 2 weeks indefinitely", "By mouth as a single once-daily oral tablet", "Intravenous infusion repeated every 8 weeks"], "ans": 0, "exp": "Inclisiran: SQ initial, again at 3 months, then every 6 months → twice-yearly maintenance (adherence advantage). Contrast: evolocumab (Repatha)/alirocumab (Praluent) SQ q2wk or monthly. The infrequent schedule is the key NABP-distinguishing feature.", "anchor": "Dosing."}, {"id": "DLP019", "subtopic": "Bempedoic Acid", "domain": "D1", "nabp": "1.A.1", "tier": "T2", "type": "MCQ", "aware": true, "recall": false, "stem": "Bempedoic acid (Nexletol) lowers LDL-C by inhibiting which enzyme, and why is muscle toxicity uncommon?", "opts": ["ATP-citrate lyase; a prodrug activated only in the liver", "HMG-CoA reductase; the drug concentrates within hepatocytes", "PCSK9 protein; the drug spares skeletal-muscle receptors", "NPC1L1 transporter; the drug acts only within the gut"], "ans": 0, "exp": "Bempedoic acid inhibits ATP-citrate lyase (upstream of HMG-CoA reductase). It is a prodrug requiring ACSVL1 activation, which is present in liver but NOT skeletal muscle → minimal myalgia → useful in statin-intolerant pts. ↓LDL ~18–25%. CLEAR Outcomes: ↓ MACE.", "anchor": "2026 ACC/AHA; CLEAR Outcomes."}, {"id": "DLP020", "subtopic": "Bempedoic Acid", "domain": "D3", "nabp": "3.C.5", "tier": "T3", "type": "SATA", "aware": false, "recall": false, "stem": "Which adverse effects are associated with bempedoic acid (Nexletol)? Select all that apply.", "opts": ["Hyperuricemia / gout flares", "Tendon rupture risk", "Elevated transaminases", "Profound bradycardia", "Increased serum creatinine"], "ans": [0, 1, 2, 4], "exp": "Bempedoic acid AEs: ↑uric acid → gout, tendon rupture (caution with prior tendon disorders/fluoroquinolones), ↑transaminases, and a small ↑ serum creatinine/BUN. No effect on heart rate — bradycardia is not associated.", "anchor": "Nexletol label."}, {"id": "DLP021", "subtopic": "Hypertriglyceridemia", "domain": "D3", "nabp": "3.C.2", "tier": "T2", "type": "MCQ", "aware": false, "recall": false, "stem": "A patient with established ASCVD on a maximally tolerated statin has triglycerides of 220 mg/dL. Which agent has outcome data (REDUCE-IT) for residual cardiovascular risk reduction?", "opts": ["Icosapent ethyl", "Gemfibrozil", "Niacin extended-release", "Cholestyramine"], "ans": 0, "exp": "Icosapent ethyl (purified EPA) 2 g BID: REDUCE-IT showed ↓ CV events in statin-treated pts with TG 135–499 + high risk. Mixed EPA/DHA omega-3 lacked benefit (STRENGTH). Niacin (AIM-HIGH/HPS2-THRIVE) showed no CV benefit + harm. AE of icosapent: AFib, bleeding.", "anchor": "REDUCE-IT."}, {"id": "DLP022", "subtopic": "Hypertriglyceridemia", "domain": "D3", "nabp": "3.C.2", "tier": "T2", "type": "MCQ", "aware": false, "recall": false, "stem": "A patient has triglycerides of 1,200 mg/dL. What is the primary treatment goal?", "opts": ["Prevent acute pancreatitis", "Achieve LDL <55 mg/dL", "Raise HDL above 60 mg/dL", "Lower Lp(a) to normal"], "ans": 0, "exp": "Severe hypertriglyceridemia (≥500, especially ≥1,000 mg/dL) → acute pancreatitis risk is the priority. Tx: fibrate (fenofibrate (Tricor)), very-low-fat diet, omega-3 fatty acids, control of secondary causes (alcohol, uncontrolled DM). LDL goals are secondary at these TG levels.", "anchor": "2026 ACC/AHA hypertriglyceridemia."}, {"id": "DLP023", "subtopic": "Hypertriglyceridemia", "domain": "D3", "nabp": "3.C.3", "tier": "T3", "type": "MCQ", "aware": false, "recall": false, "stem": "Which fibrate is preferred for combination with a statin, and why?", "opts": ["Fenofibrate; gemfibrozil markedly raises statin myopathy risk", "Gemfibrozil; it has the least renal clearance", "Gemfibrozil; it inhibits CYP3A4 the least", "Fenofibrate; it raises HDL more than gemfibrozil"], "ans": 0, "exp": "Gemfibrozil (Lopid) inhibits statin glucuronidation/OATP1B1 → markedly ↑ statin levels → rhabdo (gemfibrozil + simvastatin (Zocor) is contraindicated). Fenofibrate (Tricor) has far less interaction → preferred when a statin–fibrate combo is needed. Both are PPAR-α agonists lowering TG.", "anchor": "DDI; fibrate selection."}, {"id": "DLP024", "subtopic": "Special Populations", "domain": "D3", "nabp": "3.C.2", "tier": "T2", "type": "MCQ", "aware": true, "recall": false, "stem": "Per the 2026 guideline, how should lipid-lowering therapy be handled during pregnancy?", "opts": ["Defer most lipid-lowering drugs through pregnancy and lactation", "Continue high-intensity statin therapy throughout the pregnancy", "Switch every patient to an injectable PCSK9 inhibitor agent", "Initiate ezetimibe starting in the second trimester onward"], "ans": 0, "exp": "The 2026 guideline defers most lipid-lowering drugs during conception, pregnancy, and lactation. Statins are generally stopped (though FDA removed the blanket contraindication in 2021); bile-acid sequestrants are an option if treatment is essential. Resume after lactation.", "anchor": "2026 ACC/AHA; FDA 2021."}, {"id": "DLP025", "subtopic": "Special Populations", "domain": "D3", "nabp": "3.C.2", "tier": "T2", "type": "SATA", "aware": true, "recall": false, "stem": "For which adults aged ≥40 does the 2026 guideline support initiating lipid-lowering therapy based on the condition itself? Select all that apply.", "opts": ["Type 2 diabetes", "CKD stage 3 or higher", "HIV infection", "Type 1 diabetes", "Well-controlled GERD"], "ans": [0, 1, 2, 3], "exp": "≥40 yr with DM (type 1 or 2), CKD stage ≥3, or HIV → these higher-risk conditions support initiating lipid-lowering therapy. GERD carries no ASCVD risk and is unrelated to lipid management.", "anchor": "2026 ACC/AHA special populations."}, {"id": "DLP026", "subtopic": "Special Populations", "domain": "D3", "nabp": "3.B", "tier": "T2", "type": "MCQ", "aware": true, "recall": false, "stem": "Universal pediatric lipid screening is recommended by the 2026 guideline at what age (if not previously done)?", "opts": ["9–11 years", "1–2 years", "15–17 years", "At birth"], "ans": 0, "exp": "Screen all children once at 9–11 years (before puberty alters lipids), with earlier/targeted testing for familial hypercholesterolemia or strong family history. Early detection enables lifestyle and, in FH, early pharmacotherapy to reduce lifetime LDL exposure.", "anchor": "2026 ACC/AHA pediatrics."}, {"id": "DLP027", "subtopic": "Special Populations", "domain": "D3", "nabp": "3.C.2", "tier": "T2", "type": "MCQ", "aware": false, "recall": false, "stem": "A young adult has untreated LDL-C of 245 mg/dL, tendon xanthomas, and a father who had an MI at 41. This presentation is most consistent with:", "opts": ["Familial hypercholesterolemia", "Secondary dyslipidemia from hypothyroidism", "Polygenic borderline hyperlipidemia", "Familial chylomicronemia syndrome"], "ans": 0, "exp": "Very high LDL (often >190, here 245), tendon xanthomas, and premature ASCVD family history → heterozygous familial hypercholesterolemia (FH). Tx: high-intensity statin early + ezetimibe (Zetia)/PCSK9i to goal. Chylomicronemia presents with extreme TG, not isolated LDL.", "anchor": "FH diagnosis."}, {"id": "DLP028", "subtopic": "Risk Assessment & LDL Goals", "domain": "D3", "nabp": "3.D.1", "tier": "T2", "type": "MCQ", "aware": true, "recall": false, "stem": "For a high-risk primary-prevention patient (10-yr PREVENT risk ≥10%), the 2026 LDL-C goal and recommended starting therapy are:", "opts": ["LDL <70 mg/dL; high-intensity statin (≥50% reduction)", "LDL <100 mg/dL; moderate-intensity statin", "LDL <55 mg/dL; ezetimibe monotherapy", "LDL <130 mg/dL; lifestyle only"], "ans": 0, "exp": "High-risk primary prevention: LDL goal <70 mg/dL, start high-intensity statin targeting ≥50% LDL reduction. Borderline/intermediate goal <100 (moderate-intensity if treating). Secondary very-high-risk <55. 'Lower for longer' is the unifying principle.", "anchor": "2026 ACC/AHA Dyslipidemia."}, {"id": "DLP029", "subtopic": "Statins: AE/DDI/PGx", "domain": "D3", "nabp": "3.C.3", "tier": "T3", "type": "SATA", "aware": false, "recall": false, "stem": "Which statins are LEAST dependent on CYP3A4 metabolism and therefore preferred with strong CYP3A4 inhibitors? Select all that apply.", "opts": ["Pravastatin", "Rosuvastatin", "Pitavastatin", "Simvastatin", "Lovastatin"], "ans": [0, 1, 2], "exp": "Pravastatin (not CYP-metabolized), rosuvastatin (minimal CYP2C9), and pitavastatin (minimal CYP2C9, mostly glucuronidation) avoid the 3A4 pathway → preferred with strong 3A4 inhibitors. Simvastatin (Zocor) and lovastatin (Mevacor) are 3A4 substrates → contraindicated with strong inhibitors.", "anchor": "DDI; statin metabolism."}, {"id": "DLP030", "subtopic": "Ezetimibe", "domain": "D3", "nabp": "3.C.2", "tier": "T2", "type": "MCQ", "aware": false, "recall": false, "stem": "Which statement about ezetimibe (Zetia) combination therapy is correct?", "opts": ["Adding ezetimibe to a statin lowers LDL another ~18–25%", "Ezetimibe should never be combined with a statin", "Ezetimibe raises HDL more than any statin", "Ezetimibe is dosed three times daily with meals"], "ans": 0, "exp": "Ezetimibe added to a statin gives ~18–25% additional LDL reduction (IMPROVE-IT: incremental CV benefit). Fixed-dose ezetimibe/simvastatin (Vytorin) and bempedoic acid/ezetimibe (Nexlizet) combos exist. Ezetimibe is 10 mg once daily, food-independent; minimal effect on HDL.", "anchor": "IMPROVE-IT."}, {"id": "DLP031", "subtopic": "Brand/Generic & Combinations", "domain": "D2", "nabp": "2.A.1", "tier": "T1", "type": "MCQ", "aware": false, "recall": true, "stem": "What is the generic name for Crestor?", "opts": ["Rosuvastatin", "Atorvastatin", "Pravastatin", "Pitavastatin"], "ans": 0, "exp": "Crestor = rosuvastatin, a high-potency hydrophilic statin (high-intensity at 20–40 mg). Minimal CYP metabolism (some 2C9) → fewer 3A4 interactions; partly renally eliminated → lower starting dose in severe renal impairment and in Asian patients.", "anchor": "Brand recall."}, {"id": "DLP032", "subtopic": "Brand/Generic & Combinations", "domain": "D2", "nabp": "2.A.1", "tier": "T1", "type": "MCQ", "aware": false, "recall": true, "stem": "Repatha is the brand name for which lipid-lowering agent?", "opts": ["Evolocumab", "Alirocumab", "Inclisiran", "Bempedoic acid"], "ans": 0, "exp": "Repatha = evolocumab, a PCSK9 monoclonal antibody (SQ q2wk or monthly), ↓LDL ~50–60%; FOURIER outcomes trial. Praluent = alirocumab (ODYSSEY). Leqvio = inclisiran (siRNA, twice-yearly). Distinguishing these by mechanism and dosing is high-yield.", "anchor": "Brand recall."}, {"id": "DLP033", "subtopic": "Brand/Generic & Combinations", "domain": "D2", "nabp": "2.A.1", "tier": "T2", "type": "MCQ", "aware": false, "recall": true, "stem": "Vytorin is a fixed-dose combination of which two agents?", "opts": ["Ezetimibe + simvastatin", "Bempedoic acid + ezetimibe", "Amlodipine + atorvastatin", "Niacin + lovastatin"], "ans": 0, "exp": "Vytorin = ezetimibe/simvastatin (NPC1L1 inhibitor + statin) → dual block of absorption and synthesis. Nexlizet = bempedoic acid/ezetimibe (two non-statins, useful in statin intolerance). Caduet = amlodipine/atorvastatin (CCB + statin).", "anchor": "Combination products."}, {"id": "DLP034", "subtopic": "Brand/Generic & Combinations", "domain": "D2", "nabp": "2.A.1", "tier": "T2", "type": "MCQ", "aware": false, "recall": true, "stem": "Nexlizet combines bempedoic acid with which other agent, making it useful in statin-intolerant patients?", "opts": ["Ezetimibe", "Simvastatin", "Fenofibrate", "Evolocumab"], "ans": 0, "exp": "Nexlizet = bempedoic acid/ezetimibe — two oral non-statins (ATP-citrate lyase inhibitor + NPC1L1 inhibitor) giving additive LDL lowering (~38%+) without a statin → valuable in statin intolerance. Bempedoic acid alone = Nexletol.", "anchor": "Combination products."}, {"id": "DLP035", "subtopic": "Brand/Generic & Combinations", "domain": "D2", "nabp": "2.A.1", "tier": "T2", "type": "SATA", "aware": false, "recall": true, "stem": "Which generic–brand pairings are correct? Select all that apply.", "opts": ["Ezetimibe — Zetia", "Icosapent ethyl — Vascepa", "Inclisiran — Leqvio", "Fenofibrate — Lopid", "Alirocumab — Repatha"], "ans": [0, 1, 2], "exp": "Correct: ezetimibe = Zetia, icosapent ethyl = Vascepa, inclisiran = Leqvio. Wrong: Lopid = gemfibrozil (Tricor = fenofibrate); Repatha = evolocumab (Praluent = alirocumab). Mixing the PCSK9 mAb brands and the two fibrates is a classic distractor.", "anchor": "Brand recall."}, {"id": "DLP036", "subtopic": "Lipid Calculations", "domain": "D1", "nabp": "1.C.1", "tier": "T2", "type": "FILL", "aware": false, "recall": false, "stem": "Using the Friedewald equation, calculate LDL-C for: total cholesterol 220 mg/dL, HDL-C 50 mg/dL, triglycerides 150 mg/dL.", "ans": 140, "unit": "mg/dL", "tol": 1, "check": "220 - 50 - 150/5", "exp": "Friedewald: LDL = TC − HDL − (TG/5) = 220 − 50 − 30 = 140 mg/dL. Valid only when TG <400 mg/dL (the VLDL ≈ TG/5 estimate fails above that → use direct LDL).", "anchor": "Friedewald equation."}, {"id": "DLP037", "subtopic": "Lipid Calculations", "domain": "D1", "nabp": "1.C.1", "tier": "T1", "type": "FILL", "aware": false, "recall": false, "stem": "Calculate non-HDL cholesterol for a patient with total cholesterol 240 mg/dL and HDL-C 45 mg/dL.", "ans": 195, "unit": "mg/dL", "tol": 1, "check": "240 - 45", "exp": "Non-HDL-C = TC − HDL = 240 − 45 = 195 mg/dL. Captures all atherogenic (apoB) particles, valid in non-fasting samples and high TG. 2026 non-HDL goal ≈ LDL goal + 30 (e.g., LDL <55 → non-HDL <85).", "anchor": "Non-HDL calculation."}, {"id": "DLP038", "subtopic": "Lipid Calculations", "domain": "D1", "nabp": "1.C.1", "tier": "T2", "type": "FILL", "aware": false, "recall": false, "stem": "A patient's baseline LDL-C is 160 mg/dL and falls to 72 mg/dL on therapy. What percent reduction in LDL-C was achieved? Enter to one decimal.", "ans": 55, "unit": "%", "tol": 0.5, "check": "(160 - 72)/160*100", "exp": "% reduction = (baseline − on-treatment)/baseline × 100 = (160 − 72)/160 × 100 = 55%. ≥50% reduction defines a high-intensity statin response — this patient meets it.", "anchor": "Percent LDL reduction."}, {"id": "DLP039", "subtopic": "Lipid Calculations", "domain": "D1", "nabp": "1.C.1", "tier": "T2", "type": "FILL", "aware": false, "recall": false, "stem": "A high-intensity statin is expected to lower LDL-C by at least 50%. For a baseline LDL-C of 190 mg/dL, what is the highest expected on-treatment LDL-C from this effect alone?", "ans": 95, "unit": "mg/dL", "tol": 1, "check": "190 * 0.5", "exp": "≥50% reduction → on-treatment LDL ≤ 190 × 0.50 = 95 mg/dL. High-intensity = atorvastatin (Lipitor) 40–80 or rosuvastatin (Crestor) 20–40. If still above goal, add ezetimibe (Zetia)/bempedoic acid (Nexletol) → PCSK9i/inclisiran (Leqvio).", "anchor": "Statin intensity math."}, {"id": "DLP040", "subtopic": "Risk Assessment & LDL Goals", "domain": "D3", "nabp": "3.D.2", "tier": "T2", "type": "MCQ", "aware": false, "recall": false, "stem": "Apolipoprotein B (apoB) measurement is most appropriately used in the 2026 guideline to:", "opts": ["Assess residual atherogenic risk once LDL/non-HDL goals are met", "Replace LDL-C as the universal first-line lipid screening test", "Screen every adult once in a lifetime, like lipoprotein(a)", "Diagnose acute pancreatitis in severe hypertriglyceridemia"], "ans": 0, "exp": "ApoB is an optional confirmatory marker of residual risk in pts with ASCVD, diabetes, metabolic syndrome, or high TG who have reached LDL/non-HDL goals (apoB counts all atherogenic particles). Lp(a) — not apoB — is the universal once-in-life screen.", "anchor": "2026 ACC/AHA biomarkers."}];
+const LET = "ABCDEF";
+const MEM = {};
+const store = {
+  get(k){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):null; }catch(e){ return MEM[k]||null; } },
+  set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){ MEM[k]=v; } }
+};
+const LOGKEY="dlp_log_v1", MISSKEY="dlp_missed_v1";
+function getLog(){ return store.get(LOGKEY)||[]; }
+function pushLog(rec){ const l=getLog(); l.push(rec); store.set(LOGKEY,l); }
+function getMissed(){ return store.get(MISSKEY)||[]; }
+function setMissed(arr){ store.set(MISSKEY,[...new Set(arr)]); }
+
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function subtopics(){ return [...new Set(ITEMS.map(i=>i.subtopic))]; }
+function domainList(){ return [...new Set(ITEMS.map(i=>i.domain))].sort(); }
+function el(id){ return document.getElementById(id); }
+function show(v){ ['dash','quiz','results','prog'].forEach(x=>el(x).classList.toggle('hide',x!==v)); }
+function go(v){ if(v==='dash')renderDash(); if(v==='prog')renderProg(); show(v); window.scrollTo(0,0); }
+function setHub(){ el('hubstat').textContent = `${ITEMS.length} Qs · ${subtopics().length} topics · ${domainList().length} domains`; }
+
+let dashMode='full', countSel=0;
+function renderDash(){
+  const subs = subtopics(), doms = domainList();
+  let s = `<div class="card step">
+    <div class="steplabel"><span class="num">1</span> Choose your set</div>
+    <div class="modegrid">
+      <button class="modecard ${dashMode==='full'?'on':''}" onclick="setMode('full')">
+        <div class="mc-t">Full bank — all topics mixed</div>
+        <div class="mc-s">${ITEMS.length} questions</div></button>
+      <button class="modecard ${dashMode==='pick'?'on':''}" onclick="setMode('pick')">
+        <div class="mc-t">Pick specific subtopics</div>
+        <div class="mc-s">drill one or more areas</div></button>
+    </div>
+    <div id="subsWrap" class="${dashMode==='pick'?'':'hide'}">
+      <div class="subhdr"><span>Subtopics</span>
+        <span><button class="tag-link" onclick="allSubs(true)">Select all</button>
+        <button class="tag-link" onclick="allSubs(false)">Clear</button></span></div>
+      <div class="subtopics" id="subs">`;
+  subs.forEach((sub,i)=>{ const n=ITEMS.filter(x=>x.subtopic===sub).length;
+    s += `<label><input type="checkbox" class="subck" value="${i}" checked onchange="liveCount()"> ${sub} <span class="count-pill">(${n})</span></label>`; });
+  s += `</div></div></div>
+
+    <div class="card step">
+      <div class="steplabel"><span class="num">2</span> Filters</div>
+      <div class="filtrow">
+        <div><label>Domain</label><select id="fDom" onchange="liveCount()">
+          <option value="">all</option>${doms.map(d=>`<option>${d}</option>`).join('')}</select></div>
+        <div><label>Difficulty</label><select id="fTier" onchange="liveCount()">
+          <option value="">all tiers</option><option>T1</option><option>T2</option><option>T3</option></select></div>
+        <label class="chk"><input type="checkbox" id="fShuf" checked onchange="liveCount()"> shuffle</label>
+      </div>
+    </div>
+
+    <div class="card step">
+      <div class="steplabel"><span class="num">3</span> How many questions?</div>
+      <div class="pills" id="countPills">`;
+  [0,10,20,30,40].forEach(n=>{ s += `<button class="pill ${countSel===n?'on':''}" data-n="${n}" onclick="setCount(${n})">${n===0?'All':n}</button>`; });
+  s += `<span class="count-pill" id="avail" style="margin-left:6px"></span></div></div>
+
+    <button class="bigbtn start" id="startBtn" onclick="startQuiz()">Start quiz</button>`;
+  el('dash').innerHTML = s;
+  liveCount();
+}
+function setMode(m){ dashMode=m; el('subsWrap').classList.toggle('hide',m!=='pick');
+  document.querySelectorAll('.modecard').forEach((c,i)=>c.classList.toggle('on',(m==='full')===(i===0))); liveCount(); }
+function setCount(n){ countSel=n; document.querySelectorAll('#countPills .pill').forEach(b=>b.classList.toggle('on',+b.dataset.n===n)); liveCount(); }
+function allSubs(v){ document.querySelectorAll('.subck').forEach(c=>c.checked=v); liveCount(); }
+function selectedPool(){
+  let pool;
+  if(dashMode==='full'){ pool = ITEMS.slice(); }
+  else { const subs=subtopics(); const chosen=[...document.querySelectorAll('.subck:checked')].map(c=>subs[+c.value]);
+    pool = ITEMS.filter(i=>chosen.includes(i.subtopic)); }
+  const dom = el('fDom')?el('fDom').value:'', tier = el('fTier')?el('fTier').value:'';
+  if(dom) pool = pool.filter(i=>i.domain===dom);
+  if(tier) pool = pool.filter(i=>i.tier===tier);
+  return pool;
+}
+function liveCount(){
+  const pool = selectedPool();
+  const n = countSel? Math.min(countSel,pool.length): pool.length;
+  if(el('avail')) el('avail').textContent = `${pool.length} available`;
+  el('startBtn').disabled = n===0;
+  el('startBtn').textContent = `Start quiz · ${n} Qs`;
+}
+
+let Q=[], qi=0, score=0, sessionMissed=[], retestMode=false, answered=false, picks=[];
+function buildItem(it){
+  if(it.type==='FILL') return {...it};
+  const idx = shuffle(it.opts.map((_,i)=>i));
+  const opts = idx.map(i=>it.opts[i]);
+  const ansSet = (Array.isArray(it.ans)?it.ans:[it.ans]).map(a=>idx.indexOf(a));
+  return {...it, opts, ansSet};
+}
+function startQuiz(){
+  let pool = selectedPool();
+  if(el('fShuf').checked) pool = shuffle(pool);
+  if(countSel) pool = pool.slice(0,countSel);
+  Q = pool.map(buildItem); qi=0; score=0; sessionMissed=[]; retestMode=false;
+  if(Q.length===0) return;
+  show('quiz'); renderQ();
+}
+function startRetest(){
+  const ids = getMissed();
+  let pool = ITEMS.filter(i=>ids.includes(i.id));
+  if(pool.length===0){ alert('No missed items in your pool.'); return; }
+  Q = shuffle(pool).map(buildItem); qi=0; score=0; sessionMissed=[]; retestMode=true;
+  show('quiz'); window.scrollTo(0,0); renderQ();
+}
+function badgeHtml(it){
+  const tierC={T1:'b-t1',T2:'b-t2',T3:'b-t3'}[it.tier];
+  let b=`<div class="badge ${tierC}">${it.tier}</div><div class="badge b-dom">${it.domain}</div>
+    <div class="badge b-sub">${it.subtopic}</div><div class="badge b-id">#${it.id}</div>`;
+  if(it.type==='FILL') b+=`<div class="badge b-fill">FILL</div>`;
+  if(it.aware) b+=`<div class="badge b-new">ℹ NEW</div>`;
+  return b;
+}
+function renderQ(){
+  answered=false; picks=[];
+  const it=Q[qi];
+  const head=`<div class="card">
+    <div class="topbar"><span>Question ${qi+1} / ${Q.length}${retestMode?' · retest':''}</span><span>Score ${score}</span></div>
+    <div class="bar"><div style="width:${(qi/Q.length)*100}%"></div></div>
+    <div class="badges">${badgeHtml(it)}</div>`;
+  let body;
+  if(it.type==='FILL'){
+    body=`<div class="stem">${render(it.stem)}</div>
+      <div class="fillrow"><input id="fillIn" type="text" inputmode="decimal" autocomplete="off"
+        placeholder="Enter a number" oninput="el('checkBtn').disabled=this.value.trim()===''">
+        <span class="unit">${render(it.unit)}</span></div>
+      <div id="checkRow"><button class="bigbtn" id="checkBtn" onclick="checkFill()" disabled>Check</button></div>`;
+  } else {
+    const isSata = it.type==='SATA';
+    body=`<div class="stem">${render(it.stem)}${isSata?' <em>(Select all that apply.)</em>':''}</div><div id="opts">`;
+    it.opts.forEach((o,i)=>{ body+=`<button class="opt" id="o${i}" onclick="pick(${i},${isSata})">
+      <span class="ck">${LET[i]}.</span>${render(o)}</button>`; });
+    body+=`</div><div id="checkRow"><button class="bigbtn" id="checkBtn" onclick="checkQ(${isSata})" disabled>Check</button></div>`;
+  }
+  const tail=`<div id="exp"></div>
+    <div class="nav"><button class="ghost" onclick="go('dash')">‹ Dashboard</button>
+      <button id="nextBtn" class="ghost hide" onclick="nextQ()">Next ›</button></div></div>`;
+  el('quiz').innerHTML=head+body+tail;
+  if(it.type==='FILL') setTimeout(()=>{const f=el('fillIn'); if(f)f.focus();},30);
+}
+function pick(i,isSata){
+  if(answered) return;
+  if(isSata){ const k=picks.indexOf(i); if(k>=0)picks.splice(k,1); else picks.push(i);
+    el('o'+i).classList.toggle('sel'); }
+  else { picks=[i]; document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel')); el('o'+i).classList.add('sel'); }
+  el('checkBtn').disabled = picks.length===0;
+}
+function tolOk(user,it){
+  if(it.tol!=null) return Math.abs(user-it.ans)<=it.tol+1e-9;
+  if(it.tolpct!=null) return Math.abs(user-it.ans)<=Math.abs(it.ans)*it.tolpct/100+1e-9;
+  return Math.abs(user-it.ans)<=Math.max(Math.abs(it.ans)*0.02,0.01);
+}
+function recordAndReveal(it,ok,answerText){
+  if(ok) score++;
+  else { sessionMissed.push(it.id); const m=getMissed(); if(!m.includes(it.id)){m.push(it.id);setMissed(m);} }
+  if(ok&&retestMode){ const m=getMissed(); const k=m.indexOf(it.id); if(k>=0){m.splice(k,1);setMissed(m);} }
+  el('exp').innerHTML=`<div class="exp"><b>${ok?'✔ Correct':'✗ Answer: '+answerText}.</b> ${render(it.exp)}
+    <div class="muted" style="margin-top:6px">NABP ${it.nabp}${it.anchor?' · '+render(it.anchor):''}</div></div>`;
+  pushLog({id:it.id,domain:it.domain,subtopic:it.subtopic,ok,t:Date.now()});
+  el('checkRow').classList.add('hide'); el('nextBtn').classList.remove('hide');
+}
+function checkFill(){
+  if(answered) return; const it=Q[qi];
+  const raw=el('fillIn').value.trim().replace(/,/g,'').replace(/[^0-9eE.+-]/g,'');
+  const user=parseFloat(raw);
+  if(isNaN(user)) return;
+  answered=true;
+  const ok=tolOk(user,it);
+  el('fillIn').classList.add(ok?'correct':'wrong'); el('fillIn').disabled=true;
+  recordAndReveal(it,ok,fmtNum(it.ans)+' '+it.unit);
+}
+function checkQ(isSata){
+  if(answered||picks.length===0) return; answered=true;
+  const it=Q[qi]; const correct=it.ansSet.slice().sort((a,b)=>a-b);
+  const chosen=picks.slice().sort((a,b)=>a-b);
+  const ok = correct.length===chosen.length && correct.every((v,k)=>v===chosen[k]);
+  it.opts.forEach((o,i)=>{ const b=el('o'+i); b.classList.remove('sel');
+    if(it.ansSet.includes(i)) b.classList.add('correct');
+    else if(picks.includes(i)) b.classList.add('wrong'); });
+  const al=it.ansSet.map(a=>LET[a]).sort().join(', ');
+  recordAndReveal(it,ok,al);
+}
+function fmtNum(x){ return (Math.round(x*1000)/1000).toString(); }
+function nextQ(){ qi++; if(qi>=Q.length) renderResults(); else { renderQ(); window.scrollTo(0,0);} }
+function renderResults(){
+  const pct=Math.round(score/Q.length*100);
+  el('results').innerHTML=`<div class="card"><h2>Results</h2>
+    <div class="big">${pct}%</div>
+    <div class="stat"><span>Correct</span><b>${score} / ${Q.length}</b></div>
+    <div class="stat"><span>Missed this session</span><b>${sessionMissed.length}</b></div>
+    <div class="stat"><span>Total missed pool</span><b>${getMissed().length}</b></div>
+    <div class="nav"><button class="ghost" onclick="go('dash')">‹ Dashboard</button>
+      <button class="bigbtn start" style="width:auto;padding:11px 18px" onclick="startRetest()">Retest missed (${getMissed().length})</button></div></div>`;
+  show('results'); window.scrollTo(0,0);
+}
+function renderProg(){
+  const log=getLog();
+  const byDom={}, bySub={};
+  log.forEach(r=>{ (byDom[r.domain]=byDom[r.domain]||[0,0])[1]++; if(r.ok)byDom[r.domain][0]++;
+    (bySub[r.subtopic]=bySub[r.subtopic]||[0,0])[1]++; if(r.ok)bySub[r.subtopic][0]++; });
+  let s=`<div class="card"><h2>Progress</h2>
+    <div class="stat"><span>Total answered</span><b>${log.length}</b></div>
+    <div class="stat"><span>Current missed pool</span><b>${getMissed().length}</b></div>`;
+  s+=`<h2 style="margin-top:16px">Accuracy by domain</h2>`;
+  Object.keys(byDom).sort().forEach(d=>{const[c,t]=byDom[d];
+    s+=`<div class="stat"><span>${d}</span><b>${Math.round(c/t*100)}% (${c}/${t})</b></div>`;});
+  s+=`<h2 style="margin-top:16px">Accuracy by subtopic</h2>`;
+  Object.keys(bySub).sort().forEach(d=>{const[c,t]=bySub[d];
+    s+=`<div class="stat"><span>${d}</span><b>${Math.round(c/t*100)}% (${c}/${t})</b></div>`;});
+  if(log.length===0) s+=`<p class="muted">No attempts yet. Build a set from the Dashboard.</p>`;
+  s+=`<div class="nav"><button class="ghost" onclick="go('dash')">‹ Dashboard</button>
+     <button class="ghost" onclick="if(confirm('Reset all progress?')){store.set(LOGKEY,[]);store.set(MISSKEY,[]);renderProg();}">Reset progress</button></div></div>`;
+  el('prog').innerHTML=s;
+}
+function render(t){ t=String(t);
+  t=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  t=t.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<i>$1</i>');
+  return t; }
+document.addEventListener('keydown',e=>{
+  if(el('quiz').classList.contains('hide')) return;
+  const it=Q[qi];
+  if(!answered){
+    if(it.type==='FILL'){ if(e.key==='Enter'&&!el('checkBtn').disabled)checkFill(); return; }
+    if(/^[1-6]$/.test(e.key)){const i=+e.key-1; if(i<it.opts.length)pick(i,it.type==='SATA');}
+    if(e.key==='Enter'&&!el('checkBtn').disabled)checkQ(it.type==='SATA');
+  } else if(e.key==='Enter')nextQ();
+});
+setHub();
+renderDash();
+</script>
+</body></html>
