@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pharmaceutical Calculations — NAPLEX Quiz</title>
+<style>
+:root{--navy:#13294b;--steel:#2e5b8a;--bg:#f4f6f9;--card:#fff;--ink:#1c2530;--muted:#5b6b7d;
+--t1:#1f8a4c;--t2:#d68a14;--t3:#c0392b;--green:#1f8a4c;--red:#c0392b;--line:#dce3ec;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.5}
+header{background:var(--navy);color:#fff;padding:14px 20px}
+header h1{margin:0;font-size:18px}
+header .sub{font-size:12px;opacity:.8;margin-top:2px}
+.wrap{max-width:860px;margin:0 auto;padding:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:16px}
+h2{font-size:16px;margin:0 0 12px;color:var(--navy)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.row > div{flex:1;min-width:140px}
+label{font-size:13px;color:var(--muted);display:block;margin-bottom:4px}
+select,button,input{font-size:14px;padding:8px 10px;border-radius:7px;border:1px solid var(--line);background:#fff}
+button{cursor:pointer;background:var(--steel);color:#fff;border:none;font-weight:600}
+button:hover{filter:brightness(1.06)}
+button:disabled{background:#9fb0c2;cursor:not-allowed}
+button.ghost{background:#fff;color:var(--steel);border:1px solid var(--steel)}
+button.ghost:hover{background:#eef4fb}
+.subtopics{max-height:230px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:8px}
+.subtopics label{display:flex;align-items:center;gap:8px;margin:0;padding:5px 4px;font-size:13px;color:var(--ink);cursor:pointer}
+.subtopics input{margin:0}
+.count-pill{font-size:13px;color:var(--muted)}
+.bigbtn{width:100%;padding:13px;font-size:15px;margin-top:12px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;color:#fff}
+.b-t1{background:var(--t1)}.b-t2{background:var(--t2)}.b-t3{background:var(--t3)}
+.b-dom{background:var(--steel)}.b-sub{background:#7a8aa0}.b-id{background:#aab6c4}
+.b-new{background:#0a7d8c}.b-fill{background:#6a3d9a}
+.stem{font-size:15px;margin:8px 0 14px;font-weight:500}
+.opt{display:block;width:100%;text-align:left;background:#fff;color:var(--ink);border:1px solid var(--line);
+border-radius:8px;padding:11px 13px;margin-bottom:8px;font-weight:400}
+.opt:hover{border-color:var(--steel)}
+.opt.sel{border-color:var(--steel);background:#eef4fb}
+.opt.correct{background:#e6f5ec;border-color:var(--green);color:#0f5a30}
+.opt.wrong{background:#fbe9e7;border-color:var(--red);color:#7d2018}
+.opt .ck{font-weight:700;margin-right:8px}
+.fillrow{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.fillrow input{flex:1;font-size:16px;padding:11px 13px}
+.fillrow .unit{font-weight:600;color:var(--muted)}
+.fillrow input.correct{border-color:var(--green);background:#e6f5ec}
+.fillrow input.wrong{border-color:var(--red);background:#fbe9e7}
+.exp{background:#f7f9fc;border-left:3px solid var(--steel);border-radius:6px;padding:11px 13px;font-size:13.5px;margin-top:6px}
+.bar{height:7px;background:#e3e9f0;border-radius:5px;overflow:hidden;margin:10px 0}
+.bar > div{height:100%;background:var(--steel);width:0%}
+.topbar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:6px}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
+.stat{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.big{font-size:34px;font-weight:800;color:var(--navy);text-align:center;margin:6px 0}
+.muted{color:var(--muted);font-size:13px}
+footer{text-align:center;font-size:11px;color:var(--muted);padding:14px}
+.hide{display:none}
+.tag-link{font-size:13px;background:none;color:var(--steel);border:none;padding:4px;cursor:pointer;text-decoration:underline}
+</style></head>
+<body>
+<header><h1>Pharmaceutical Calculations</h1><div class="sub">NAPLEX 2026 Quiz · numeric fill-in + MCQ + SATA · no timer</div></header>
+<div class="wrap">
+  <div style="display:flex;gap:8px;margin-bottom:14px">
+    <button class="ghost" onclick="go('dash')">Dashboard</button>
+    <button class="ghost" onclick="go('prog')">Progress</button>
+  </div>
+  <div id="dash"></div>
+  <div id="quiz" class="hide"></div>
+  <div id="results" class="hide"></div>
+  <div id="prog" class="hide"></div>
+</div>
+<footer>John Williams, PharmD, MS · PGY1 Pharmacy Resident, Confluence Health (Wenatchee, WA)</footer>
+<script>
+const ITEMS = [{"id": "P1-1", "subtopic": "1C1 Patient Params & Labs", "domain": "D1", "nabp": "1.C.1", "tier": "T2", "type": "FILL", "stem": "A 70-year-old man weighs 80 kg with a stable SCr of 1.2 mg/dL. Estimate his creatinine clearance (Cockcroft-Gault) using the given weight.", "ans": 64.8, "unit": "mL/min", "tolpct": 2, "check": "(140-70)*80/(72*1.2)", "exp": "CG = [(140−age)×wt]/(72×SCr) = (70×80)/(72×1.2) = 5600/86.4 = **64.8 mL/min**. Multiply ×0.85 for females.", "anchor": "Cockcroft-Gault."}, {"id": "P1-2", "subtopic": "1C1 Patient Params & Labs", "domain": "D1", "nabp": "1.C.1", "tier": "T2", "type": "FILL", "stem": "A 60-year-old woman weighs 65 kg with SCr 0.9 mg/dL. Estimate her CrCl (Cockcroft-Gault).", "ans": 68.2, "unit": "mL/min", "tolpct": 2, "check": "(140-60)*65*0.85/(72*0.9)", "exp": "CG×0.85 (female) = (80×65×0.85)/(72×0.9) = 4420/64.8 = **68.2 mL/min**.", "anchor": "CG female factor."}, {"id": "P1-3", "subtopic": "1C1 Patient Params & Labs", "domain": "D1", "nabp": "1.C.1", "tier": "T1", "type": "FILL", "stem": "Calculate ideal body weight (IBW) for a man who is 70 inches tall.", "ans": 73, "unit": "kg", "tol": 0.5, "check": "50+2.3*(70-60)", "exp": "Male IBW = 50 + 2.3×(inches over 60) = 50 + 2.3×10 = **73 kg**. Female base = 45.5.", "anchor": "Devine IBW."}, {"id": "P1-4", "subtopic": "1C1 Patient Params & Labs", "domain": "D1", "nabp": "1.C.1", "tier": "T1", "type": "FILL", "stem": "Calculate IBW for a woman who is 65 inches tall.", "ans": 57, "unit": "kg", "tol": 0.5, "check": "45.5+2.3*(65-60)", "exp": "Female IBW = 45.5 + 2.3×(inches over 60) = 45.5 + 2.3×5 = **57 kg**.", "anchor": "Devine IBW."}, {"id": "P1-5", "subtopic": "1C1 Patient Params & Labs", "domain": "D1", "nabp": "1.C.1", "tier": "T2", "type": "FILL", "stem": "A patient is 180 cm tall and weighs 80 kg. Calculate body surface area (Mosteller).", "ans": 2.0, "unit": "m^2", "tolpct": 2, "check": "(180*80/3600)**0.5", "exp": "Mosteller BSA = √[(ht·cm × wt·kg)/3600] = √(14400/3600) = √4 = **2.0 m²**.", "anchor": "Mosteller BSA."}, {"id": "P1-6", "subtopic": "1C1 Patient Params & Labs", "domain": "D1", "nabp": "1.C.1", "tier": "T2", "type": "FILL", "stem": "Measured calcium is 7.6 mg/dL with serum albumin 2.0 g/dL. Calculate the corrected calcium.", "ans": 9.2, "unit": "mg/dL", "tol": 0.1, "check": "7.6+0.8*(4.0-2.0)", "exp": "Corrected Ca = measured + 0.8×(4.0 − albumin) = 7.6 + 0.8×2.0 = **9.2 mg/dL** → truly normocalcemic.", "anchor": "Corrected calcium."}, {"id": "P1-7", "subtopic": "1C1 Patient Params & Labs", "domain": "D1", "nabp": "1.C.1", "tier": "T3", "type": "FILL", "stem": "A man (IBW 73 kg) weighs 110 kg actual. Calculate his adjusted body weight (ABW).", "ans": 87.8, "unit": "kg", "tol": 0.5, "check": "73+0.4*(110-73)", "exp": "ABW = IBW + 0.4×(actual − IBW) = 73 + 0.4×37 = **87.8 kg**. Used for aminoglycoside dosing in obesity.", "anchor": "Adjusted body weight."}, {"id": "P1-8", "subtopic": "1C1 Patient Params & Labs", "domain": "D1", "nabp": "1.C.1", "tier": "T3", "type": "FILL", "stem": "Total phenytoin is 6 mcg/mL; albumin is 2.5 g/dL (normal renal function). Calculate the albumin-corrected phenytoin level.", "ans": 10, "unit": "mcg/mL", "tol": 0.2, "check": "6/(0.2*2.5+0.1)", "exp": "Sheiner-Tozer = measured/[(0.2×albumin)+0.1] = 6/(0.5+0.1) = 6/0.6 = **10 mcg/mL** → actually therapeutic.", "anchor": "Sheiner-Tozer."}, {"id": "Q-1", "subtopic": "1C2 Quantities Dispensed/Administered", "domain": "D1", "nabp": "1.C.2", "tier": "T1", "type": "FILL", "stem": "Amoxicillin 500 mg one capsule PO three times daily; 30 capsules dispensed. What is the days supply?", "ans": 10, "unit": "days", "tol": 0, "check": "30/3", "exp": "30 caps ÷ 3 caps/day = **10 days**.", "anchor": "Days supply."}, {"id": "Q-2", "subtopic": "1C2 Quantities Dispensed/Administered", "domain": "D1", "nabp": "1.C.2", "tier": "T2", "type": "FILL", "stem": "A 10 mL vial of U-100 insulin is used at 35 units twice daily. How many whole days will one vial last (round down)?", "ans": 14, "unit": "days", "tol": 0, "check": "int(1000/70)", "exp": "U-100 = 100 units/mL → 10 mL = 1000 units. Use 70 units/day → 1000/70 = 14.3 → **14 days** (round down; never round up a supply).", "anchor": "Insulin days supply."}, {"id": "Q-3", "subtopic": "1C2 Quantities Dispensed/Administered", "domain": "D1", "nabp": "1.C.2", "tier": "T2", "type": "FILL", "stem": "Latanoprost: 1 drop in each eye nightly. A 2.5 mL bottle delivers 20 drops/mL. How many days will it last?", "ans": 25, "unit": "days", "tol": 0, "check": "(2.5*20)/2", "exp": "2.5 mL × 20 drops/mL = 50 drops; 2 drops/day (both eyes) → 50/2 = **25 days**.", "anchor": "Drops days supply."}, {"id": "Q-4", "subtopic": "1C2 Quantities Dispensed/Administered", "domain": "D1", "nabp": "1.C.2", "tier": "T1", "type": "FILL", "stem": "Warfarin 7.5 mg PO daily is dispensed using 2.5 mg tablets for a 30-day supply. How many tablets are needed?", "ans": 90, "unit": "tablets", "tol": 0, "check": "(7.5/2.5)*30", "exp": "7.5/2.5 = 3 tabs/day × 30 days = **90 tablets**.", "anchor": "Tablet quantity."}, {"id": "Q-5", "subtopic": "1C2 Quantities Dispensed/Administered", "domain": "D1", "nabp": "1.C.2", "tier": "T2", "type": "FILL", "stem": "Amoxicillin suspension 400 mg/5 mL; dose 600 mg PO twice daily for 10 days. What total volume (mL) should be dispensed?", "ans": 150, "unit": "mL", "tol": 1, "check": "(600/400*5)*2*10", "exp": "Per dose = 600 mg ÷ 400 mg × 5 mL = 7.5 mL; ×2/day ×10 days = **150 mL**.", "anchor": "Liquid quantity."}, {"id": "Q-6", "subtopic": "1C2 Quantities Dispensed/Administered", "domain": "D1", "nabp": "1.C.2", "tier": "T1", "type": "FILL", "stem": "An albuterol MDI contains 200 actuations; the patient uses 2 puffs four times daily. Days supply?", "ans": 25, "unit": "days", "tol": 0, "check": "200/8", "exp": "2 puffs × 4 = 8 puffs/day → 200/8 = **25 days**.", "anchor": "Inhaler days supply."}, {"id": "R-1", "subtopic": "1C3 Rates & Drip Rates", "domain": "D1", "nabp": "1.C.3", "tier": "T1", "type": "FILL", "stem": "Infuse 1000 mL over 8 hours. What is the rate in mL/hr?", "ans": 125, "unit": "mL/hr", "tol": 0, "check": "1000/8", "exp": "1000 mL ÷ 8 h = **125 mL/hr**.", "anchor": "IV rate."}, {"id": "R-2", "subtopic": "1C3 Rates & Drip Rates", "domain": "D1", "nabp": "1.C.3", "tier": "T2", "type": "FILL", "stem": "Infuse 1000 mL over 8 hours with a set calibrated at 15 gtt/mL. Calculate the rate in gtt/min (round to nearest whole drop).", "ans": 31, "unit": "gtt/min", "tol": 1, "check": "1000*15/(8*60)", "exp": "(1000 mL × 15 gtt/mL) ÷ (8 h × 60 min) = 15000/480 = 31.25 → **31 gtt/min**.", "anchor": "Drop rate."}, {"id": "R-3", "subtopic": "1C3 Rates & Drip Rates", "domain": "D1", "nabp": "1.C.3", "tier": "T2", "type": "FILL", "stem": "Heparin 25,000 units in 250 mL is infusing at 11 mL/hr. What is the rate in units/hr?", "ans": 1100, "unit": "units/hr", "tol": 5, "check": "(25000/250)*11", "exp": "Concentration = 25,000/250 = 100 units/mL; ×11 mL/hr = **1100 units/hr**.", "anchor": "Heparin units/hr."}, {"id": "R-4", "subtopic": "1C3 Rates & Drip Rates", "domain": "D1", "nabp": "1.C.3", "tier": "T3", "type": "FILL", "stem": "Order: heparin 18 units/kg/hr for an 80 kg patient; bag concentration 100 units/mL. Set the pump rate in mL/hr.", "ans": 14.4, "unit": "mL/hr", "tolpct": 2, "check": "80*18/100", "exp": "Dose = 80 kg × 18 = 1440 units/hr ÷ 100 units/mL = **14.4 mL/hr**.", "anchor": "Weight-based drip."}, {"id": "R-5", "subtopic": "1C3 Rates & Drip Rates", "domain": "D1", "nabp": "1.C.3", "tier": "T3", "type": "FILL", "stem": "Dopamine 400 mg in 250 mL; order 5 mcg/kg/min for a 70 kg patient. Calculate the pump rate in mL/hr.", "ans": 13.1, "unit": "mL/hr", "tolpct": 3, "check": "70*5*60/1600", "exp": "Conc = 400 mg/250 mL = 1.6 mg/mL = 1600 mcg/mL. Dose = 70×5 = 350 mcg/min ×60 = 21,000 mcg/hr ÷ 1600 = **13.1 mL/hr**.", "anchor": "mcg/kg/min → mL/hr."}, {"id": "R-6", "subtopic": "1C3 Rates & Drip Rates", "domain": "D1", "nabp": "1.C.3", "tier": "T3", "type": "FILL", "stem": "Dobutamine 250 mg in 250 mL runs at 30 mL/hr in an 80 kg patient. What dose is being delivered in mcg/kg/min?", "ans": 6.25, "unit": "mcg/kg/min", "tolpct": 2, "check": "(30*1000/60)/80", "exp": "Conc = 1000 mcg/mL. 30 mL/hr ×1000 = 30,000 mcg/hr ÷60 = 500 mcg/min ÷80 kg = **6.25 mcg/kg/min**.", "anchor": "Reverse rate."}, {"id": "R-7", "subtopic": "1C3 Rates & Drip Rates", "domain": "D1", "nabp": "1.C.3", "tier": "T1", "type": "FILL", "stem": "A 500 mL bag is running at 50 mL/hr. How many hours will it take to infuse?", "ans": 10, "unit": "hours", "tol": 0, "check": "500/50", "exp": "500 mL ÷ 50 mL/hr = **10 hours**.", "anchor": "Infusion time."}, {"id": "C-1", "subtopic": "1C4 Dose Conversions", "domain": "D1", "nabp": "1.C.4", "tier": "T2", "type": "FILL", "stem": "How many milliequivalents are in 1500 mg of potassium chloride (KCl, MW 74.5, valence 1)?", "ans": 20.1, "unit": "mEq", "tolpct": 3, "check": "1500/74.5", "exp": "mEq = mg ÷ (MW/valence) = 1500 ÷ 74.5 = **20.1 mEq**.", "anchor": "mg → mEq."}, {"id": "C-2", "subtopic": "1C4 Dose Conversions", "domain": "D1", "nabp": "1.C.4", "tier": "T2", "type": "FILL", "stem": "How many milligrams of KCl (MW 74.5) provide 40 mEq?", "ans": 2980, "unit": "mg", "tol": 5, "check": "40*74.5", "exp": "mg = mEq × (MW/valence) = 40 × 74.5 = **2980 mg**.", "anchor": "mEq → mg."}, {"id": "C-3", "subtopic": "1C4 Dose Conversions", "domain": "D1", "nabp": "1.C.4", "tier": "T2", "type": "FILL", "stem": "Convert oxycodone 20 mg to morphine milligram equivalents (MME conversion factor 1.5).", "ans": 30, "unit": "MME", "tol": 0, "check": "20*1.5", "exp": "20 mg × 1.5 = **30 MME/day**. (Hydrocodone 1, oxycodone 1.5, methadone variable/high.)", "anchor": "MME — CDC."}, {"id": "C-4", "subtopic": "1C4 Dose Conversions", "domain": "D1", "nabp": "1.C.4", "tier": "T2", "type": "FILL", "stem": "Convert morphine 10 mg IV to the equianalgesic oral morphine dose (IV:PO = 1:3).", "ans": 30, "unit": "mg", "tol": 0, "check": "10*3", "exp": "Oral morphine ≈ 3× IV → 10 mg IV ≈ **30 mg PO** (first-pass metabolism lowers oral potency).", "anchor": "Opioid IV:PO."}, {"id": "C-5", "subtopic": "1C4 Dose Conversions", "domain": "D1", "nabp": "1.C.4", "tier": "T3", "type": "FILL", "stem": "Convert prednisone 40 mg to an equivalent methylprednisolone dose (prednisone 5 mg ≡ methylprednisolone 4 mg).", "ans": 32, "unit": "mg", "tol": 0, "check": "40*4/5", "exp": "40 mg × (4/5) = **32 mg methylprednisolone**. (Hydrocortisone 20 ≡ prednisone 5 ≡ methylpred 4 ≡ dexamethasone 0.75.)", "anchor": "Steroid equivalence."}, {"id": "C-6", "subtopic": "1C4 Dose Conversions", "domain": "D1", "nabp": "1.C.4", "tier": "T1", "type": "FILL", "stem": "A 2% lidocaine solution is given as a 5 mL dose. How many milligrams of lidocaine are delivered?", "ans": 100, "unit": "mg", "tol": 0, "check": "2*10*5", "exp": "2% = 20 mg/mL; ×5 mL = **100 mg**. (% w/v ×10 = mg/mL.)", "anchor": "% → mg."}, {"id": "N-1", "subtopic": "1C5 Concentrations, Ratio Strength & Osmolarity", "domain": "D1", "nabp": "1.C.5", "tier": "T1", "type": "FILL", "stem": "Express 5% dextrose (D5W) as a concentration in mg/mL.", "ans": 50, "unit": "mg/mL", "tol": 0, "check": "5*10", "exp": "% w/v ×10 = mg/mL → 5×10 = **50 mg/mL** (5 g/100 mL).", "anchor": "% w/v."}, {"id": "N-2", "subtopic": "1C5 Concentrations, Ratio Strength & Osmolarity", "domain": "D1", "nabp": "1.C.5", "tier": "T2", "type": "FILL", "stem": "Express a 1:2500 ratio strength as a percentage strength (% w/v).", "ans": 0.04, "unit": "%", "tolpct": 2, "check": "(1/2500)*100", "exp": "1 g in 2500 mL → (1/2500)×100 = **0.04%**.", "anchor": "Ratio → %."}, {"id": "N-3", "subtopic": "1C5 Concentrations, Ratio Strength & Osmolarity", "domain": "D1", "nabp": "1.C.5", "tier": "T2", "type": "FILL", "stem": "Epinephrine 1:1000 is given as 0.3 mL IM. How many milligrams are administered?", "ans": 0.3, "unit": "mg", "tol": 0.01, "check": "(1000/1000)*0.3", "exp": "1:1000 = 1 g/1000 mL = 1 mg/mL; ×0.3 mL = **0.3 mg** (anaphylaxis IM dose).", "anchor": "Ratio strength dose."}, {"id": "N-4", "subtopic": "1C5 Concentrations, Ratio Strength & Osmolarity", "domain": "D1", "nabp": "1.C.5", "tier": "T2", "type": "FILL", "stem": "How many mL of 50% dextrose are needed to compound 500 mL of 10% dextrose (C1V1 = C2V2)?", "ans": 100, "unit": "mL", "tol": 0, "check": "10*500/50", "exp": "V1 = (C2×V2)/C1 = (10×500)/50 = **100 mL** of 50%, then qs to 500 mL.", "anchor": "Dilution."}, {"id": "N-5", "subtopic": "1C5 Concentrations, Ratio Strength & Osmolarity", "domain": "D1", "nabp": "1.C.5", "tier": "T3", "type": "FILL", "stem": "Using alligation, how many mL of 70% dextrose are needed to make 500 mL of 40% dextrose by mixing with 20% dextrose?", "ans": 200, "unit": "mL", "tol": 2, "check": "500*(40-20)/(70-20)", "exp": "Parts of 70% = (40−20) = 20; parts of 20% = (70−40) = 30; total 50. 70% volume = 500 × 20/50 = **200 mL** (and 300 mL of 20%).", "anchor": "Alligation."}, {"id": "N-6", "subtopic": "1C5 Concentrations, Ratio Strength & Osmolarity", "domain": "D1", "nabp": "1.C.5", "tier": "T3", "type": "FILL", "stem": "Calculate the osmolarity of 0.9% NaCl (MW 58.5; dissociates into 2 particles) in mOsm/L.", "ans": 308, "unit": "mOsm/L", "tolpct": 3, "check": "(9*1000/58.5)*2", "exp": "0.9% = 9 g/L → 9000/58.5 = 153.8 mmol/L × 2 ions = **308 mOsm/L** (isotonic ≈ 290–310).", "anchor": "Osmolarity."}, {"id": "N-7", "subtopic": "1C5 Concentrations, Ratio Strength & Osmolarity", "domain": "D1", "nabp": "1.C.5", "tier": "T2", "type": "FILL", "stem": "Express a 1:50,000 ratio strength in parts per million (ppm).", "ans": 20, "unit": "ppm", "tol": 0, "check": "(1/50000)*1000000", "exp": "ppm = (1/50,000) × 1,000,000 = **20 ppm**.", "anchor": "ppm."}, {"id": "N-8", "subtopic": "1C5 Concentrations, Ratio Strength & Osmolarity", "domain": "D1", "nabp": "1.C.5", "tier": "T3", "type": "FILL", "stem": "Potassium permanganate 1:10,000 solution is dispensed as 240 mL. How many milligrams of drug does it contain?", "ans": 24, "unit": "mg", "tol": 0.5, "check": "(1/10000)*1000*240", "exp": "1:10,000 = 1 g/10,000 mL = 0.1 mg/mL; ×240 mL = **24 mg**.", "anchor": "Ratio strength mass."}, {"id": "N-9", "subtopic": "1C5 Concentrations, Ratio Strength & Osmolarity", "domain": "D1", "nabp": "1.C.5", "tier": "T1", "type": "FILL", "stem": "A vial contains 2 g of drug in 250 mL. What is the concentration in mg/mL?", "ans": 8, "unit": "mg/mL", "tol": 0, "check": "2000/250", "exp": "2 g = 2000 mg ÷ 250 mL = **8 mg/mL**.", "anchor": "Concentration."}, {"id": "CM-1", "subtopic": "1C6 Compounding Quantities", "domain": "D1", "nabp": "1.C.6", "tier": "T1", "type": "FILL", "stem": "How many grams of hydrocortisone are needed to compound 60 g of a 2% ointment?", "ans": 1.2, "unit": "g", "tol": 0.05, "check": "60*0.02", "exp": "60 g × 2% = 60 × 0.02 = **1.2 g** hydrocortisone (qs with base to 60 g).", "anchor": "% compounding."}, {"id": "CM-2", "subtopic": "1C6 Compounding Quantities", "domain": "D1", "nabp": "1.C.6", "tier": "T2", "type": "FILL", "stem": "To make 120 g of a 5% cream by diluting a 10% cream with white petrolatum (0%), how many grams of the 10% cream are required?", "ans": 60, "unit": "g", "tol": 1, "check": "120*5/10", "exp": "Drug needed = 120 × 5% = 6 g. From a 10% source: 6 g ÷ 0.10 = **60 g** of 10% cream; add 60 g base.", "anchor": "Dilution compounding."}, {"id": "CM-3", "subtopic": "1C6 Compounding Quantities", "domain": "D1", "nabp": "1.C.6", "tier": "T3", "type": "FILL", "stem": "120 mg of drug is triturated with lactose to a total of 1200 mg. What weight of this mixture (the aliquot) contains 5 mg of drug?", "ans": 50, "unit": "mg", "tol": 1, "check": "1200*5/120", "exp": "Mixture is 120 mg drug per 1200 mg total. Aliquot = 1200 × (5/120) = **50 mg** of mixture contains 5 mg drug.", "anchor": "Aliquot method."}, {"id": "CM-4", "subtopic": "1C6 Compounding Quantities", "domain": "D1", "nabp": "1.C.6", "tier": "T2", "type": "FILL", "stem": "A dry powder antibiotic requires 90 mL of water to yield 100 mL of final suspension. What is the powder (dry) volume?", "ans": 10, "unit": "mL", "tol": 0, "check": "100-90", "exp": "Powder volume = final volume − diluent volume = 100 − 90 = **10 mL**.", "anchor": "Powder volume."}, {"id": "CM-5", "subtopic": "1C6 Compounding Quantities", "domain": "D1", "nabp": "1.C.6", "tier": "T2", "type": "FILL", "stem": "How many grams of coal tar are in 454 g of a 2.5% coal tar ointment?", "ans": 11.35, "unit": "g", "tolpct": 2, "check": "454*0.025", "exp": "454 g × 2.5% = 454 × 0.025 = **11.35 g** coal tar.", "anchor": "% mass."}, {"id": "TPN-1", "subtopic": "1C7 Nutrition / TPN", "domain": "D1", "nabp": "1.C.7", "tier": "T2", "type": "FILL", "stem": "A TPN contains 500 mL of 50% dextrose. How many kilocalories does the dextrose provide (3.4 kcal/g)?", "ans": 850, "unit": "kcal", "tol": 5, "check": "(500*0.50)*3.4", "exp": "50% = 0.5 g/mL → 500 mL = 250 g × 3.4 kcal/g = **850 kcal**.", "anchor": "Dextrose kcal."}, {"id": "TPN-2", "subtopic": "1C7 Nutrition / TPN", "domain": "D1", "nabp": "1.C.7", "tier": "T2", "type": "FILL", "stem": "A TPN contains 500 mL of 10% amino acids. How many kcal do the amino acids provide (4 kcal/g)?", "ans": 200, "unit": "kcal", "tol": 2, "check": "(500*0.10)*4", "exp": "10% = 50 g protein × 4 kcal/g = **200 kcal**.", "anchor": "Protein kcal."}, {"id": "TPN-3", "subtopic": "1C7 Nutrition / TPN", "domain": "D1", "nabp": "1.C.7", "tier": "T2", "type": "FILL", "stem": "A TPN contains 250 mL of 20% lipid emulsion (2 kcal/mL). How many kcal does the lipid provide?", "ans": 500, "unit": "kcal", "tol": 2, "check": "250*2", "exp": "20% IVFE = 2 kcal/mL × 250 mL = **500 kcal**. (10% = 1.1 kcal/mL.)", "anchor": "Lipid kcal."}, {"id": "TPN-4", "subtopic": "1C7 Nutrition / TPN", "domain": "D1", "nabp": "1.C.7", "tier": "T2", "type": "FILL", "stem": "Using the prior components (dextrose 850 kcal, amino acids 200 kcal, lipid 500 kcal), what is the total caloric content?", "ans": 1550, "unit": "kcal", "tol": 5, "check": "850+200+500", "exp": "850 + 200 + 500 = **1550 total kcal**.", "anchor": "Total kcal."}, {"id": "TPN-5", "subtopic": "1C7 Nutrition / TPN", "domain": "D1", "nabp": "1.C.7", "tier": "T3", "type": "FILL", "stem": "For the same TPN, what are the NON-protein calories?", "ans": 1350, "unit": "kcal", "tol": 5, "check": "850+500", "exp": "Non-protein kcal = dextrose + lipid = 850 + 500 = **1350 kcal** (excludes amino acids; used for the nonprotein-cal:nitrogen ratio).", "anchor": "Nonprotein kcal."}, {"id": "TPN-6", "subtopic": "1C7 Nutrition / TPN", "domain": "D1", "nabp": "1.C.7", "tier": "T3", "type": "FILL", "stem": "The TPN contains 50 g of amino acids (protein). How many grams of nitrogen does it supply?", "ans": 8, "unit": "g", "tol": 0.1, "check": "50/6.25", "exp": "Nitrogen = protein g ÷ 6.25 = 50/6.25 = **8 g nitrogen** (protein is ~16% nitrogen).", "anchor": "Nitrogen."}, {"id": "BS-1", "subtopic": "1C8 Biostatistics & Pharmacoeconomics", "domain": "D1", "nabp": "1.C.8", "tier": "T2", "type": "FILL", "stem": "Event rate is 20% with placebo and 12% with drug. Calculate the absolute risk reduction (ARR) as a percent.", "ans": 8, "unit": "%", "tol": 0, "check": "(0.20-0.12)*100", "exp": "ARR = CER − EER = 20% − 12% = **8%** (0.08).", "anchor": "ARR."}, {"id": "BS-2", "subtopic": "1C8 Biostatistics & Pharmacoeconomics", "domain": "D1", "nabp": "1.C.8", "tier": "T2", "type": "FILL", "stem": "With a control event rate of 20% and treatment event rate of 12%, calculate the relative risk reduction (RRR) as a percent.", "ans": 40, "unit": "%", "tol": 0, "check": "(0.20-0.12)/0.20*100", "exp": "RRR = ARR/CER = 0.08/0.20 = 0.40 = **40%**.", "anchor": "RRR."}, {"id": "BS-3", "subtopic": "1C8 Biostatistics & Pharmacoeconomics", "domain": "D1", "nabp": "1.C.8", "tier": "T3", "type": "FILL", "stem": "The ARR of an intervention is 8% (0.08). Calculate the number needed to treat (round up to a whole patient).", "ans": 13, "unit": "patients", "tol": 0, "check": "-(-1//0.08)", "exp": "NNT = 1/ARR = 1/0.08 = 12.5 → **13** (always round NNT UP).", "anchor": "NNT."}, {"id": "BS-4", "subtopic": "1C8 Biostatistics & Pharmacoeconomics", "domain": "D1", "nabp": "1.C.8", "tier": "T2", "type": "FILL", "stem": "Control event rate 20%, treatment event rate 12%. Calculate the relative risk (RR).", "ans": 0.6, "unit": "(ratio)", "tol": 0.02, "check": "0.12/0.20", "exp": "RR = EER/CER = 0.12/0.20 = **0.6** (RR<1 → treatment lowers risk).", "anchor": "Relative risk."}, {"id": "BS-5", "subtopic": "1C8 Biostatistics & Pharmacoeconomics", "domain": "D1", "nabp": "1.C.8", "tier": "T3", "type": "FILL", "stem": "A 2×2 table: exposed 30 cases/70 non-cases; unexposed 10 cases/90 non-cases. Calculate the odds ratio.", "ans": 3.86, "unit": "(ratio)", "tolpct": 3, "check": "(30*90)/(70*10)", "exp": "OR = (a×d)/(b×c) = (30×90)/(70×10) = 2700/700 = **3.86**.", "anchor": "Odds ratio."}, {"id": "BS-6", "subtopic": "1C8 Biostatistics & Pharmacoeconomics", "domain": "D1", "nabp": "1.C.8", "tier": "T2", "type": "FILL", "stem": "A test yields 80 true positives and 20 false negatives. Calculate the sensitivity as a percent.", "ans": 80, "unit": "%", "tol": 0, "check": "80/(80+20)*100", "exp": "Sensitivity = TP/(TP+FN) = 80/100 = **80%** (detects disease; SnNout).", "anchor": "Sensitivity."}, {"id": "BS-7", "subtopic": "1C8 Biostatistics & Pharmacoeconomics", "domain": "D1", "nabp": "1.C.8", "tier": "T3", "type": "FILL", "stem": "A test yields 80 true positives and 40 false positives. Calculate the positive predictive value (PPV) as a percent.", "ans": 66.7, "unit": "%", "tolpct": 1, "check": "80/(80+40)*100", "exp": "PPV = TP/(TP+FP) = 80/120 = **66.7%** (depends on prevalence).", "anchor": "PPV."}, {"id": "BS-8", "subtopic": "1C8 Biostatistics & Pharmacoeconomics", "domain": "D1", "nabp": "1.C.8", "tier": "T2", "type": "FILL", "stem": "Drug B costs $5000 more than Drug A and gains 0.5 additional QALYs. Calculate the incremental cost-effectiveness ratio (ICER) in $/QALY.", "ans": 10000, "unit": "$/QALY", "tol": 0, "check": "5000/0.5", "exp": "ICER = Δcost/Δeffect = 5000/0.5 = **$10,000/QALY**.", "anchor": "ICER."}, {"id": "PK-1", "subtopic": "1C9 Pharmacokinetics", "domain": "D1", "nabp": "1.C.9", "tier": "T2", "type": "FILL", "stem": "A drug has an elimination rate constant (ke) of 0.1 hr⁻¹. Calculate the half-life.", "ans": 6.93, "unit": "hours", "tolpct": 2, "check": "0.693/0.1", "exp": "t½ = 0.693/ke = 0.693/0.1 = **6.93 h**.", "anchor": "Half-life."}, {"id": "PK-2", "subtopic": "1C9 Pharmacokinetics", "domain": "D1", "nabp": "1.C.9", "tier": "T2", "type": "FILL", "stem": "A drug's half-life is 8 hours. Calculate the elimination rate constant (ke) in hr⁻¹.", "ans": 0.0866, "unit": "hr^-1", "tolpct": 2, "check": "0.693/8", "exp": "ke = 0.693/t½ = 0.693/8 = **0.0866 hr⁻¹**.", "anchor": "ke."}, {"id": "PK-3", "subtopic": "1C9 Pharmacokinetics", "domain": "D1", "nabp": "1.C.9", "tier": "T1", "type": "FILL", "stem": "A 500 mg IV bolus produces an initial plasma concentration (C0) of 25 mg/L. Calculate the volume of distribution.", "ans": 20, "unit": "L", "tol": 0, "check": "500/25", "exp": "Vd = dose/C0 = 500/25 = **20 L**.", "anchor": "Vd."}, {"id": "PK-4", "subtopic": "1C9 Pharmacokinetics", "domain": "D1", "nabp": "1.C.9", "tier": "T3", "type": "FILL", "stem": "A drug has ke 0.0866 hr⁻¹ (t½ 8 h) and Vd 20 L. Calculate the clearance in L/hr.", "ans": 1.73, "unit": "L/hr", "tolpct": 3, "check": "(0.693/8)*20", "exp": "CL = ke × Vd = 0.0866 × 20 = **1.73 L/hr**.", "anchor": "Clearance."}, {"id": "PK-5", "subtopic": "1C9 Pharmacokinetics", "domain": "D1", "nabp": "1.C.9", "tier": "T3", "type": "FILL", "stem": "Target plasma concentration is 15 mg/L; Vd is 0.5 L/kg in a 70 kg patient (F = 1, IV). Calculate the loading dose.", "ans": 525, "unit": "mg", "tol": 5, "check": "15*(0.5*70)", "exp": "LD = (Css × Vd)/F = 15 × (0.5×70 = 35 L) = **525 mg**.", "anchor": "Loading dose."}, {"id": "PK-6", "subtopic": "1C9 Pharmacokinetics", "domain": "D1", "nabp": "1.C.9", "tier": "T2", "type": "FILL", "stem": "Target steady-state concentration is 15 mg/L and clearance is 3 L/hr. Calculate the maintenance infusion rate (mg/hr).", "ans": 45, "unit": "mg/hr", "tol": 0, "check": "15*3", "exp": "Maintenance rate = Css × CL = 15 × 3 = **45 mg/hr** (at steady state, rate in = rate out).", "anchor": "Maintenance rate."}, {"id": "PK-7", "subtopic": "1C9 Pharmacokinetics", "domain": "D1", "nabp": "1.C.9", "tier": "T1", "type": "FILL", "stem": "A drug's half-life is 6 hours. Approximately how many hours to reach steady state (use 5 half-lives)?", "ans": 30, "unit": "hours", "tol": 0, "check": "5*6", "exp": "Steady state ≈ 5 × t½ = 5 × 6 = **30 h** (~97%).", "anchor": "Time to steady state."}, {"id": "PK-8", "subtopic": "1C9 Pharmacokinetics", "domain": "D1", "nabp": "1.C.9", "tier": "T2", "type": "FILL", "stem": "A continuous infusion runs at 30 mg/hr; clearance is 2 L/hr. Calculate the steady-state concentration (mg/L).", "ans": 15, "unit": "mg/L", "tol": 0, "check": "30/2", "exp": "Css = infusion rate/CL = 30/2 = **15 mg/L**.", "anchor": "Css from infusion."}, {"id": "M-1", "subtopic": "1C8 Biostatistics & Pharmacoeconomics", "domain": "D1", "nabp": "1.C.8", "tier": "T1", "type": "MCQ", "stem": "A trial reports a relative risk (RR) of 0.60 for the primary outcome with the drug. This means:", "opts": ["The treated group had a 40% lower event rate than control", "The treated group had a 60% higher event rate than control", "The treatment had no effect on the event rate", "The drug caused the event in 60% of patients"], "ans": 0, "exp": "RR = EER/CER; **RR 0.60 → 40% relative reduction** in events vs control (RRR = 1 − RR = 0.40). RR >1 would mean increased risk; RR = 1 means no effect.", "anchor": "RR interpretation."}, {"id": "M-2", "subtopic": "1C8 Biostatistics & Pharmacoeconomics", "domain": "D1", "nabp": "1.C.8", "tier": "T1", "type": "MCQ", "stem": "A number needed to treat (NNT) of 13 is best interpreted as:", "opts": ["Treat 13 patients to cause one extra harm", "Treat 13 patients to prevent one additional event", "13% of patients benefit from the therapy", "The therapy works 13 times better than placebo"], "ans": 1, "exp": "**NNT = patients treated to prevent one additional bad outcome** = 1/ARR. Lower NNT = more effective. The 'harm' version is NNH (1/ARI).", "anchor": "NNT meaning."}, {"id": "M-3", "subtopic": "1C1 Patient Params & Labs", "domain": "D1", "nabp": "1.C.1", "tier": "T2", "type": "MCQ", "stem": "For estimating creatinine clearance with Cockcroft-Gault in an obese patient (>30% over IBW), the most commonly recommended weight is:", "opts": ["Total (actual) body weight always", "Ideal body weight only if underweight", "Adjusted body weight", "Lean body weight from BSA"], "ans": 2, "exp": "In obesity, **adjusted body weight** [IBW + 0.4×(actual−IBW)] is commonly used in CG to avoid overestimating CrCl; use actual if it is below IBW, and IBW for normal-range weights (institution-dependent).", "anchor": "CG weight choice."}, {"id": "M-4", "subtopic": "1C5 Concentrations, Ratio Strength & Osmolarity", "domain": "D1", "nabp": "1.C.5", "tier": "T1", "type": "MCQ", "stem": "Compared with plasma (~290 mOsm/L), 3% sodium chloride is best described as:", "opts": ["Hypotonic", "Isotonic", "Iso-osmotic with cells", "Hypertonic"], "ans": 3, "exp": "3% NaCl (~1027 mOsm/L) is markedly **hypertonic** → give via central line, watch for osmotic demyelination if sodium is corrected too fast. 0.9% NaCl and LR are ~isotonic; 0.45% NaCl is hypotonic.", "anchor": "Tonicity."}, {"id": "M-5", "subtopic": "1C7 Nutrition / TPN", "domain": "D1", "nabp": "1.C.7", "tier": "T1", "type": "MCQ", "stem": "Which caloric value is correct for parenteral nutrition macronutrients?", "opts": ["Hydrous dextrose provides 3.4 kcal/g", "Amino acids provide 9 kcal/g", "Lipid 20% provides 4 kcal/mL", "Hydrous dextrose provides 4 kcal/g"], "ans": 0, "exp": "**Dextrose monohydrate = 3.4 kcal/g** (oral carbohydrate is 4); protein/amino acids = 4 kcal/g; 20% IVFE = 2 kcal/mL (10% = 1.1). Fat = 9 kcal/g.", "anchor": "PN caloric densities."}, {"id": "M-6", "subtopic": "1C9 Pharmacokinetics", "domain": "D1", "nabp": "1.C.9", "tier": "T2", "type": "MCQ", "stem": "A drug with a very large volume of distribution (e.g., >100 L) is best described as:", "opts": ["Confined to the plasma compartment", "Extensively distributed into tissues", "Poorly lipophilic and highly ionized", "Not removed by hemodialysis only if small Vd"], "ans": 1, "exp": "A **large Vd indicates extensive tissue distribution** (lipophilic, highly tissue-/protein-bound peripherally) → little drug stays in plasma → generally **not** well removed by dialysis. Small Vd (~plasma volume) = confined intravascularly.", "anchor": "Vd interpretation."}, {"id": "M-7", "subtopic": "1C5 Concentrations, Ratio Strength & Osmolarity", "domain": "D1", "nabp": "1.C.5", "tier": "T2", "type": "SATA", "stem": "Which intravenous fluids are HYPERTONIC relative to plasma? Select all that apply.", "opts": ["3% sodium chloride", "10% dextrose in water (D10W)", "D5 in 0.45% NaCl (D5 ½NS)", "0.45% sodium chloride", "Lactated Ringer's", "0.9% sodium chloride"], "ans": [0, 1, 2], "exp": "Hypertonic: **3% NaCl**, **D10W**, **D5½NS**. Hypotonic: **0.45% NaCl**. Isotonic: **LR** (~273) and **0.9% NaCl** (~308). Note D5W is isotonic in the bag but effectively hypotonic once dextrose is metabolized.", "anchor": "IV fluid tonicity."}];
+const LET = "ABCDEF";
+const MEM = {};
+const store = {
+  get(k){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):null; }catch(e){ return MEM[k]||null; } },
+  set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){ MEM[k]=v; } }
+};
+const LOGKEY="calc_log_v1", MISSKEY="calc_missed_v1";
+function getLog(){ return store.get(LOGKEY)||[]; }
+function pushLog(rec){ const l=getLog(); l.push(rec); store.set(LOGKEY,l); }
+function getMissed(){ return store.get(MISSKEY)||[]; }
+function setMissed(arr){ store.set(MISSKEY,[...new Set(arr)]); }
+
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function subtopics(){ return [...new Set(ITEMS.map(i=>i.subtopic))]; }
+function el(id){ return document.getElementById(id); }
+function show(v){ ['dash','quiz','results','prog'].forEach(x=>el(x).classList.toggle('hide',x!==v)); }
+function go(v){ if(v==='dash')renderDash(); if(v==='prog')renderProg(); show(v); window.scrollTo(0,0); }
+
+function renderDash(){
+  const subs = subtopics();
+  let s = `<div class="card"><h2>Build your set</h2>
+    <div class="row">
+      <div><label>Domain</label><select id="fDom"><option value="">All</option>
+        <option>D1</option><option>D2</option><option>D3</option><option>D4</option><option>D5</option></select></div>
+      <div><label>Tier</label><select id="fTier"><option value="">All</option>
+        <option>T1</option><option>T2</option><option>T3</option></select></div>
+      <div><label>Count</label><select id="fCount"><option value="0">All</option>
+        <option>10</option><option>20</option><option>30</option><option>40</option></select></div>
+      <div><label>Order</label><select id="fShuf"><option value="1">Shuffle</option><option value="0">In order</option></select></div>
+    </div>
+    <div style="margin-top:12px"><label>Subtopics
+      <span style="float:right">
+        <button class="tag-link" onclick="allSubs(true)">Select all</button>
+        <button class="tag-link" onclick="allSubs(false)">Clear</button></span></label>
+      <div class="subtopics" id="subs">`;
+  subs.forEach((sub,i)=>{ const n=ITEMS.filter(x=>x.subtopic===sub).length;
+    s += `<label><input type="checkbox" class="subck" value="${i}" checked onchange="liveCount()"> ${sub} <span class="count-pill">(${n})</span></label>`; });
+  s += `</div></div>
+    <div class="count-pill" id="live" style="margin-top:6px"></div>
+    <button class="bigbtn" id="startBtn" onclick="startQuiz()">Start quiz</button></div>`;
+  el('dash').innerHTML = s;
+  ['fDom','fTier','fCount','fShuf'].forEach(id=>el(id).onchange=liveCount);
+  liveCount();
+}
+function allSubs(v){ document.querySelectorAll('.subck').forEach(c=>c.checked=v); liveCount(); }
+function selectedPool(){
+  const subs = subtopics();
+  const chosen = [...document.querySelectorAll('.subck:checked')].map(c=>subs[+c.value]);
+  const dom = el('fDom').value, tier = el('fTier').value;
+  let pool = ITEMS.filter(i=>chosen.includes(i.subtopic));
+  if(dom) pool = pool.filter(i=>i.domain===dom);
+  if(tier) pool = pool.filter(i=>i.tier===tier);
+  return pool;
+}
+function liveCount(){
+  const pool = selectedPool();
+  const want = +el('fCount').value;
+  const n = want? Math.min(want,pool.length): pool.length;
+  el('live').textContent = `${pool.length} match filters · quiz of ${n}`;
+  el('startBtn').disabled = n===0;
+  el('startBtn').textContent = `Start quiz · ${n} Qs`;
+}
+
+let Q=[], qi=0, score=0, sessionMissed=[], retestMode=false, answered=false, picks=[];
+function buildItem(it){
+  if(it.type==='FILL') return {...it};
+  const idx = shuffle(it.opts.map((_,i)=>i));
+  const opts = idx.map(i=>it.opts[i]);
+  const ansSet = (Array.isArray(it.ans)?it.ans:[it.ans]).map(a=>idx.indexOf(a));
+  return {...it, opts, ansSet};
+}
+function startQuiz(){
+  let pool = selectedPool();
+  const want = +el('fCount').value;
+  if(+el('fShuf').value) pool = shuffle(pool);
+  if(want) pool = pool.slice(0,want);
+  Q = pool.map(buildItem); qi=0; score=0; sessionMissed=[]; retestMode=false;
+  if(Q.length===0) return;
+  show('quiz'); renderQ();
+}
+function startRetest(){
+  const ids = getMissed();
+  let pool = ITEMS.filter(i=>ids.includes(i.id));
+  if(pool.length===0){ alert('No missed items in your pool.'); return; }
+  Q = shuffle(pool).map(buildItem); qi=0; score=0; sessionMissed=[]; retestMode=true;
+  show('quiz'); window.scrollTo(0,0); renderQ();
+}
+function badgeHtml(it){
+  const tierC={T1:'b-t1',T2:'b-t2',T3:'b-t3'}[it.tier];
+  let b=`<div class="badge ${tierC}">${it.tier}</div><div class="badge b-dom">${it.domain}</div>
+    <div class="badge b-sub">${it.subtopic}</div><div class="badge b-id">#${it.id}</div>`;
+  if(it.type==='FILL') b+=`<div class="badge b-fill">FILL</div>`;
+  if(it.aware) b+=`<div class="badge b-new">ℹ NEW</div>`;
+  return b;
+}
+function renderQ(){
+  answered=false; picks=[];
+  const it=Q[qi];
+  const head=`<div class="card">
+    <div class="topbar"><span>Question ${qi+1} / ${Q.length}${retestMode?' · retest':''}</span><span>Score ${score}</span></div>
+    <div class="bar"><div style="width:${(qi/Q.length)*100}%"></div></div>
+    <div class="badges">${badgeHtml(it)}</div>`;
+  let body;
+  if(it.type==='FILL'){
+    body=`<div class="stem">${render(it.stem)}</div>
+      <div class="fillrow"><input id="fillIn" type="text" inputmode="decimal" autocomplete="off"
+        placeholder="Enter a number" oninput="el('checkBtn').disabled=this.value.trim()===''">
+        <span class="unit">${render(it.unit)}</span></div>
+      <div id="checkRow"><button class="bigbtn" id="checkBtn" onclick="checkFill()" disabled>Check</button></div>`;
+  } else {
+    const isSata = it.type==='SATA';
+    body=`<div class="stem">${render(it.stem)}${isSata?' <em>(Select all that apply.)</em>':''}</div><div id="opts">`;
+    it.opts.forEach((o,i)=>{ body+=`<button class="opt" id="o${i}" onclick="pick(${i},${isSata})">
+      <span class="ck">${LET[i]}.</span>${render(o)}</button>`; });
+    body+=`</div><div id="checkRow"><button class="bigbtn" id="checkBtn" onclick="checkQ(${isSata})" disabled>Check</button></div>`;
+  }
+  const tail=`<div id="exp"></div>
+    <div class="nav"><button class="ghost" onclick="go('dash')">‹ Dashboard</button>
+      <button id="nextBtn" class="hide" onclick="nextQ()">Next ›</button></div></div>`;
+  el('quiz').innerHTML=head+body+tail;
+  if(it.type==='FILL') setTimeout(()=>{const f=el('fillIn'); if(f)f.focus();},30);
+}
+function pick(i,isSata){
+  if(answered) return;
+  if(isSata){ const k=picks.indexOf(i); if(k>=0)picks.splice(k,1); else picks.push(i);
+    el('o'+i).classList.toggle('sel'); }
+  else { picks=[i]; document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel')); el('o'+i).classList.add('sel'); }
+  el('checkBtn').disabled = picks.length===0;
+}
+function tolOk(user,it){
+  if(it.tol!=null) return Math.abs(user-it.ans)<=it.tol+1e-9;
+  if(it.tolpct!=null) return Math.abs(user-it.ans)<=Math.abs(it.ans)*it.tolpct/100+1e-9;
+  return Math.abs(user-it.ans)<=Math.max(Math.abs(it.ans)*0.02,0.01);
+}
+function recordAndReveal(it,ok,answerText){
+  if(ok) score++;
+  else { sessionMissed.push(it.id); const m=getMissed(); if(!m.includes(it.id)){m.push(it.id);setMissed(m);} }
+  if(ok&&retestMode){ const m=getMissed(); const k=m.indexOf(it.id); if(k>=0){m.splice(k,1);setMissed(m);} }
+  el('exp').innerHTML=`<div class="exp"><b>${ok?'✔ Correct':'✗ Answer: '+answerText}.</b> ${render(it.exp)}
+    <div class="muted" style="margin-top:6px">NABP ${it.nabp}${it.anchor?' · '+render(it.anchor):''}</div></div>`;
+  pushLog({id:it.id,domain:it.domain,subtopic:it.subtopic,ok,t:Date.now()});
+  el('checkRow').classList.add('hide'); el('nextBtn').classList.remove('hide');
+}
+function checkFill(){
+  if(answered) return; const it=Q[qi];
+  const raw=el('fillIn').value.trim().replace(/,/g,'').replace(/[^0-9eE.+-]/g,'');
+  const user=parseFloat(raw);
+  if(isNaN(user)) return;
+  answered=true;
+  const ok=tolOk(user,it);
+  el('fillIn').classList.add(ok?'correct':'wrong'); el('fillIn').disabled=true;
+  recordAndReveal(it,ok,fmtNum(it.ans)+' '+it.unit);
+}
+function checkQ(isSata){
+  if(answered||picks.length===0) return; answered=true;
+  const it=Q[qi]; const correct=it.ansSet.slice().sort((a,b)=>a-b);
+  const chosen=picks.slice().sort((a,b)=>a-b);
+  const ok = correct.length===chosen.length && correct.every((v,k)=>v===chosen[k]);
+  it.opts.forEach((o,i)=>{ const b=el('o'+i); b.classList.remove('sel');
+    if(it.ansSet.includes(i)) b.classList.add('correct');
+    else if(picks.includes(i)) b.classList.add('wrong'); });
+  const al=it.ansSet.map(a=>LET[a]).sort().join(', ');
+  recordAndReveal(it,ok,al);
+}
+function fmtNum(x){ return (Math.round(x*1000)/1000).toString(); }
+function nextQ(){ qi++; if(qi>=Q.length) renderResults(); else { renderQ(); window.scrollTo(0,0);} }
+function renderResults(){
+  const pct=Math.round(score/Q.length*100);
+  el('results').innerHTML=`<div class="card"><h2>Results</h2>
+    <div class="big">${pct}%</div>
+    <div class="stat"><span>Correct</span><b>${score} / ${Q.length}</b></div>
+    <div class="stat"><span>Missed this session</span><b>${sessionMissed.length}</b></div>
+    <div class="stat"><span>Total missed pool</span><b>${getMissed().length}</b></div>
+    <div class="nav"><button class="ghost" onclick="go('dash')">‹ Dashboard</button>
+      <button onclick="startRetest()">Retest missed (${getMissed().length})</button></div></div>`;
+  show('results'); window.scrollTo(0,0);
+}
+function renderProg(){
+  const log=getLog();
+  const byDom={}, bySub={};
+  log.forEach(r=>{ (byDom[r.domain]=byDom[r.domain]||[0,0])[1]++; if(r.ok)byDom[r.domain][0]++;
+    (bySub[r.subtopic]=bySub[r.subtopic]||[0,0])[1]++; if(r.ok)bySub[r.subtopic][0]++; });
+  let s=`<div class="card"><h2>Progress</h2>
+    <div class="stat"><span>Total answered</span><b>${log.length}</b></div>
+    <div class="stat"><span>Current missed pool</span><b>${getMissed().length}</b></div>`;
+  s+=`<h2 style="margin-top:16px">Accuracy by domain</h2>`;
+  Object.keys(byDom).sort().forEach(d=>{const[c,t]=byDom[d];
+    s+=`<div class="stat"><span>${d}</span><b>${Math.round(c/t*100)}% (${c}/${t})</b></div>`;});
+  s+=`<h2 style="margin-top:16px">Accuracy by subtopic</h2>`;
+  Object.keys(bySub).sort().forEach(d=>{const[c,t]=bySub[d];
+    s+=`<div class="stat"><span>${d}</span><b>${Math.round(c/t*100)}% (${c}/${t})</b></div>`;});
+  if(log.length===0) s+=`<p class="muted">No attempts yet. Build a set from the Dashboard.</p>`;
+  s+=`<div class="nav"><button class="ghost" onclick="go('dash')">‹ Dashboard</button>
+     <button onclick="if(confirm('Reset all progress?')){store.set(LOGKEY,[]);store.set(MISSKEY,[]);renderProg();}">Reset progress</button></div></div>`;
+  el('prog').innerHTML=s;
+}
+function render(t){ t=String(t);
+  t=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  t=t.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<i>$1</i>');
+  return t; }
+document.addEventListener('keydown',e=>{
+  if(el('quiz').classList.contains('hide')) return;
+  const it=Q[qi];
+  if(!answered){
+    if(it.type==='FILL'){ if(e.key==='Enter'&&!el('checkBtn').disabled)checkFill(); return; }
+    if(/^[1-6]$/.test(e.key)){const i=+e.key-1; if(i<it.opts.length)pick(i,it.type==='SATA');}
+    if(e.key==='Enter'&&!el('checkBtn').disabled)checkQ(it.type==='SATA');
+  } else if(e.key==='Enter')nextQ();
+});
+renderDash();
+</script>
+</body></html>
